@@ -98,7 +98,7 @@ export function HeroSection() {
                   Tarif tout compris
                 </span>
               </div>
-              <div className="mt-2 font-serif text-5xl sm:text-6xl font-semibold text-white tabular-nums leading-none">
+              <div className="mt-2 font-serif text-4xl sm:text-6xl font-semibold text-white tabular-nums leading-none">
                 {formatXAF(CAMPAIGN.totalPrice)}
               </div>
               <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-cream/90">
@@ -128,7 +128,7 @@ export function HeroSection() {
                 asChild
                 variant="cta"
                 size="xl"
-                className="animate-pulse-soft cta-shine w-full sm:w-auto tap-target"
+                className="animate-pulse-soft cta-shine w-full sm:w-auto tap-target whitespace-normal h-auto py-3.5 px-4 sm:px-10 sm:py-0 sm:h-16 text-base sm:text-lg"
                 onClick={() => {
                   haptic("medium");
                   trackConversion(CONVERSION_EVENTS.HERO_INSCRIPTION, {
@@ -145,7 +145,7 @@ export function HeroSection() {
                   Je réserve la place de mon enfant
                 </a>
               </Button>
-              <Button asChild variant="outline-light" size="xl" className="w-full sm:w-auto tap-target">
+              <Button asChild variant="outline-light" size="xl" className="w-full sm:w-auto tap-target whitespace-normal h-auto py-3.5 px-4 sm:px-10 sm:py-0 sm:h-16 text-base sm:text-lg">
                 <a href="#offre" className="flex items-center justify-center gap-2">
                   Voir l'offre complète
                   <ArrowDown className="h-4 w-4" />
