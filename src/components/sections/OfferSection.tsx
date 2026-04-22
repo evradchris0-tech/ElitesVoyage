@@ -54,8 +54,8 @@ const INCLUDES = [
   },
   {
     icon: Plane,
-    title: "Air France",
-    text: "Possibilité de vol Air France selon disponibilités et itinéraires — demandez à notre équipe.",
+    title: "Autres compagnies",
+    text: "Possibilité de voler avec d'autres compagnies selon disponibilités et itinéraires — demandez à notre équipe.",
   },
 ];
 

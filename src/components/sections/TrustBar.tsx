@@ -11,8 +11,8 @@ const items = [
   },
   {
     icon: Plane,
-    title: "Brussels Airlines · Air France",
-    sub: "Partenaires aériens officiels",
+    title: "Brussels Airlines",
+    sub: "Partenaire aérien officiel",
   },
   {
     icon: Building2,
