@@ -89,7 +89,27 @@ export function SocialProofSection() {
           </h2>
         </motion.div>
 
-        <div className="grid gap-6 sm:grid-cols-3">
+        {/* Mobile — swipeable row */}
+        <div className="snap-row -mx-5 px-5 flex gap-4 overflow-x-auto sm:hidden pb-3">
+          {TESTIMONIALS.map((t) => (
+            <div
+              key={t.name}
+              className="snap-item flex-none w-[86%] min-w-[270px] rounded-2xl border border-accent/20 bg-white p-6 shadow-soft"
+            >
+              <Quote className="h-6 w-6 text-accent mb-4 opacity-70" />
+              <p className="text-sm text-navy/75 leading-relaxed italic text-pretty mb-5">
+                «&nbsp;{t.quote}&nbsp;»
+              </p>
+              <div className="border-t border-accent/20 pt-4">
+                <div className="font-serif text-sm font-semibold text-navy">{t.name}</div>
+                <div className="text-[11px] text-navy/55 mt-0.5">{t.role}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop — grid */}
+        <div className="hidden sm:grid gap-6 sm:grid-cols-3">
           {TESTIMONIALS.map((t, i) => (
             <motion.div
               key={t.name}

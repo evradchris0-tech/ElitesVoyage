@@ -5,6 +5,7 @@ import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { trackConversion, CONVERSION_EVENTS } from "@/lib/track";
+import { haptic } from "@/lib/haptics";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { CAMPAIGN, formatXAF } from "@/lib/config";
 
@@ -43,7 +44,7 @@ export function FinalCTASection() {
             Offre Mobilité Étudiante 2026
           </div>
 
-          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-medium text-white leading-tight text-balance max-w-4xl mx-auto">
+          <h2 className="fluid-h1 font-serif font-medium text-white text-balance max-w-4xl mx-auto">
             Prêt à offrir à votre enfant le départ qu'il mérite&nbsp;?
           </h2>
 
@@ -61,12 +62,13 @@ export function FinalCTASection() {
               asChild
               variant="cta"
               size="xl"
-              className="animate-pulse-soft w-full sm:w-auto"
-              onClick={() =>
+              className="animate-pulse-soft cta-shine w-full sm:w-auto tap-target"
+              onClick={() => {
+                haptic("medium");
                 trackConversion(CONVERSION_EVENTS.FINAL_INSCRIPTION, {
                   source: "cta-final",
-                })
-              }
+                });
+              }}
             >
               <a
                 href={buildWhatsAppLink("inscription-principal")}
@@ -82,8 +84,11 @@ export function FinalCTASection() {
               asChild
               variant="outline-light"
               size="xl"
-              className="w-full sm:w-auto"
-              onClick={() => trackConversion(CONVERSION_EVENTS.DOWNLOAD_PDF)}
+              className="w-full sm:w-auto tap-target"
+              onClick={() => {
+                haptic("light");
+                trackConversion(CONVERSION_EVENTS.DOWNLOAD_PDF);
+              }}
             >
               <a href="/protocole-mobilite-2026.pdf" download>
                 <Download className="h-5 w-5" />

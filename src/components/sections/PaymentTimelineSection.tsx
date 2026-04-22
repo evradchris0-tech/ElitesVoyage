@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { CAMPAIGN, formatXAF } from "@/lib/config";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { trackConversion, CONVERSION_EVENTS } from "@/lib/track";
+import { haptic } from "@/lib/haptics";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { cn } from "@/lib/utils";
 
@@ -61,7 +62,7 @@ export function PaymentTimelineSection() {
             <Star className="h-3 w-3 fill-current" />
             Paiement échelonné
           </Badge>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium text-navy leading-tight text-balance">
+          <h2 className="fluid-h2 font-serif font-medium text-navy text-balance">
             Un paiement en 3 temps, pensé pour les familles
           </h2>
           <p className="mt-4 text-base sm:text-lg text-navy/70 leading-relaxed text-pretty">
@@ -165,9 +166,11 @@ export function PaymentTimelineSection() {
             asChild
             variant="cta"
             size="lg"
-            onClick={() =>
-              trackConversion(CONVERSION_EVENTS.PAIEMENT_INSCRIPTION)
-            }
+            className="cta-shine tap-target"
+            onClick={() => {
+              haptic("medium");
+              trackConversion(CONVERSION_EVENTS.PAIEMENT_INSCRIPTION);
+            }}
           >
             <a
               href={buildWhatsAppLink("inscription-rapide")}

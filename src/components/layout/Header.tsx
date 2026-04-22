@@ -9,6 +9,7 @@ import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/s
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { cn } from "@/lib/utils";
 import { trackConversion, CONVERSION_EVENTS } from "@/lib/track";
+import { haptic } from "@/lib/haptics";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 
 const NAV_ITEMS = [
@@ -35,7 +36,7 @@ export function Header() {
       className={cn(
         "sticky top-0 z-40 w-full transition-all duration-300",
         scrolled
-          ? "bg-cream/95 backdrop-blur border-b border-accent/20 shadow-soft"
+          ? "bg-cream/85 backdrop-blur-xl supports-[backdrop-filter]:bg-cream/70 border-b border-accent/20 shadow-soft"
           : "bg-transparent",
       )}
     >
@@ -77,7 +78,10 @@ export function Header() {
             variant="cta"
             size="sm"
             className="hidden sm:inline-flex"
-            onClick={() => trackConversion(CONVERSION_EVENTS.HERO_INSCRIPTION, { source: "header" })}
+            onClick={() => {
+              haptic("light");
+              trackConversion(CONVERSION_EVENTS.HERO_INSCRIPTION, { source: "header" });
+            }}
           >
             <a
               href={buildWhatsAppLink("inscription-principal")}
@@ -91,7 +95,7 @@ export function Header() {
 
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="lg:hidden" aria-label="Menu">
+              <Button variant="ghost" size="icon" className="lg:hidden tap-target" aria-label="Menu">
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
@@ -122,7 +126,10 @@ export function Header() {
                       href={buildWhatsAppLink("inscription-principal")}
                       target="_blank"
                       rel="noopener"
-                      onClick={() => trackConversion(CONVERSION_EVENTS.HERO_INSCRIPTION, { source: "mobile-menu" })}
+                      onClick={() => {
+                        haptic("medium");
+                        trackConversion(CONVERSION_EVENTS.HERO_INSCRIPTION, { source: "mobile-menu" });
+                      }}
                     >
                       <WhatsAppIcon className="h-4 w-4" />
                       Je réserve la place

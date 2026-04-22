@@ -49,7 +49,7 @@ export function DocumentsSection() {
             <ClipboardList className="h-3.5 w-3.5" />
             Documents à réunir
           </Badge>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium text-navy leading-tight text-balance">
+          <h2 className="fluid-h2 font-serif font-medium text-navy text-balance">
             Les 5 documents à préparer pour votre enfant
           </h2>
           <p className="mt-4 text-base sm:text-lg text-navy/70 leading-relaxed text-pretty">

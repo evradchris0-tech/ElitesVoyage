@@ -21,21 +21,29 @@
     --border: 35 25% 85%;
     --input: 35 25% 85%;
     --ring: 213 62% 16%;
+
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+    --safe-top: env(safe-area-inset-top, 0px);
   }
 
   * {
     @apply border-border;
+    -webkit-tap-highlight-color: transparent;
   }
 
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
 
   body {
     @apply bg-cream text-navy antialiased;
     font-family: "Manrope", system-ui, sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
+    -webkit-font-smoothing: antialiased;
+    overscroll-behavior-y: none;
   }
 
   h1, h2, h3, h4 {
@@ -43,9 +51,55 @@
     font-feature-settings: "liga" 1, "dlig" 1;
   }
 
+  /* Fluid hero typography — smooth scaling from 360px to 1440px */
+  .fluid-h1 {
+    font-size: clamp(2.25rem, 6.5vw + 0.5rem, 5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+  .fluid-h2 {
+    font-size: clamp(1.75rem, 4vw + 0.5rem, 3.25rem);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+  }
 
   ::selection {
     @apply bg-accent-warm/30 text-navy;
+  }
+
+  /* Respect reduced-motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Nicer touch interaction — bigger tap areas and active state */
+  a, button, [role="button"] {
+    touch-action: manipulation;
+  }
+
+  button:active,
+  a:active,
+  [role="button"]:active {
+    transform: translateZ(0);
+  }
+
+  /* Scroll-snap mobile carousels */
+  .snap-row {
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .snap-row::-webkit-scrollbar {
+    display: none;
+  }
+  .snap-item {
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
   }
 }
 
@@ -68,6 +122,45 @@
     background-position: center;
     height: 24px;
   }
+
+  /* Safe-area padding helpers */
+  .pb-safe {
+    padding-bottom: calc(0.75rem + var(--safe-bottom));
+  }
+  .bottom-safe {
+    bottom: calc(1rem + var(--safe-bottom));
+  }
+  .bottom-safe-sticky {
+    bottom: calc(5.25rem + var(--safe-bottom));
+  }
+
+  /* Shine effect used on primary hero CTA */
+  .cta-shine {
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-shine::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+      100deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.35) 50%,
+      transparent 100%
+    );
+    transform: skewX(-18deg);
+    animation: shine 4.5s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes shine {
+    0%, 60% { left: -100%; }
+    100% { left: 160%; }
+  }
 }
 
 @layer utilities {
@@ -76,5 +169,9 @@
   }
   .text-pretty {
     text-wrap: pretty;
+  }
+  .tap-target {
+    min-height: 44px;
+    min-width: 44px;
   }
 }

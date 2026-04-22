@@ -61,7 +61,7 @@ export function OfferSection() {
           <Badge variant="default" className="mb-4">
             L'offre en détail
           </Badge>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium text-navy leading-tight text-balance">
+          <h2 className="fluid-h2 font-serif font-medium text-navy text-balance">
             Ce que comprend votre offre
           </h2>
           <p className="mt-4 text-base sm:text-lg text-navy/70 leading-relaxed text-pretty">

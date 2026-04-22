@@ -7,6 +7,8 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppFloat } from "@/components/layout/WhatsAppFloat";
 import { StickyCTA } from "@/components/layout/StickyCTA";
+import { ScrollProgress } from "@/components/layout/ScrollProgress";
+import type { Viewport } from "next";
 
 import "./globals.css";
 
@@ -62,6 +64,27 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    title: "Elites Voyages",
+    statusBarStyle: "black-translucent",
+  },
+  formatDetection: {
+    telephone: false,
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#0B2545" },
+    { media: "(prefers-color-scheme: dark)", color: "#0B2545" },
+  ],
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: "cover",
+  colorScheme: "light",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -78,6 +101,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="font-sans">
+        <ScrollProgress />
         <Header />
         <main>{children}</main>
         <Footer />

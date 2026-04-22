@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Calendar, AlertTriangle, Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -11,9 +12,23 @@ import { BogolanDivider } from "@/components/PlaneIcon";
 import { cn } from "@/lib/utils";
 
 export function FlightDatesSection() {
+  const scrollerRef = useRef<HTMLDivElement | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const onScroll = () => {
+      const cardWidth = el.scrollWidth / FLIGHT_DATES.length;
+      const idx = Math.round(el.scrollLeft / cardWidth);
+      setActiveIndex(Math.min(FLIGHT_DATES.length - 1, Math.max(0, idx)));
+    };
+    el.addEventListener("scroll", onScroll, { passive: true });
+    return () => el.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <section id="dates" className="section-spacing bg-navy relative overflow-hidden">
-      {/* bg texture */}
       <div
         className="absolute inset-0 -z-10 opacity-10 pointer-events-none"
         style={{
@@ -33,7 +48,7 @@ export function FlightDatesSection() {
             <Calendar className="h-3.5 w-3.5" />
             5 créneaux de départ
           </Badge>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium text-white leading-tight text-balance">
+          <h2 className="fluid-h2 font-serif font-medium text-white text-balance">
             Choisissez votre date de départ
           </h2>
           <p className="mt-4 text-base sm:text-lg text-cream/70 leading-relaxed text-pretty">
@@ -43,7 +58,52 @@ export function FlightDatesSection() {
           </p>
         </motion.div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Mobile: swipeable row / Desktop: grid */}
+        <div
+          ref={scrollerRef}
+          className="snap-row -mx-5 px-5 flex gap-4 overflow-x-auto md:hidden pb-4"
+        >
+          {FLIGHT_DATES.map((flight) => (
+            <div
+              key={flight.date}
+              className={cn(
+                "snap-item flex-none w-[82%] min-w-[260px] rounded-2xl border-2 p-6 transition-all",
+                "highlighted" in flight && flight.highlighted
+                  ? "border-accent bg-white/10 backdrop-blur"
+                  : "warning" in flight && flight.warning
+                    ? "border-warning/40 bg-white/5"
+                    : "border-white/10 bg-white/5",
+              )}
+            >
+              <DateCardContent flight={flight} />
+            </div>
+          ))}
+        </div>
+
+        {/* Dot indicators mobile */}
+        <div className="flex items-center justify-center gap-2 md:hidden mt-2">
+          {FLIGHT_DATES.map((f, i) => (
+            <button
+              key={f.date}
+              onClick={() => {
+                const el = scrollerRef.current;
+                if (!el) return;
+                const cardWidth = el.scrollWidth / FLIGHT_DATES.length;
+                el.scrollTo({ left: cardWidth * i, behavior: "smooth" });
+              }}
+              className={cn(
+                "transition-all rounded-full",
+                activeIndex === i
+                  ? "w-6 h-2 bg-accent"
+                  : "w-2 h-2 bg-white/25",
+              )}
+              aria-label={`Voir la date ${i + 1}`}
+            />
+          ))}
+        </div>
+
+        {/* Desktop grid */}
+        <div className="hidden md:grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {FLIGHT_DATES.map((flight, i) => (
             <motion.div
               key={flight.date}
@@ -58,34 +118,11 @@ export function FlightDatesSection() {
                   "highlighted" in flight && flight.highlighted
                     ? "border-accent bg-white/10 backdrop-blur"
                     : "warning" in flight && flight.warning
-                    ? "border-warning/40 bg-white/5"
-                    : "border-white/10 bg-white/5",
+                      ? "border-warning/40 bg-white/5"
+                      : "border-white/10 bg-white/5",
                 )}
               >
-                <div className="flex items-start justify-between mb-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/20 text-accent">
-                    <Calendar className="h-5 w-5" />
-                  </div>
-                  {"highlighted" in flight && flight.highlighted && (
-                    <Badge variant="gold">
-                      <Star className="h-3 w-3 fill-current" />
-                      Recommandé
-                    </Badge>
-                  )}
-                  {"warning" in flight && flight.warning && (
-                    <span className="inline-flex items-center gap-1 text-warning text-[11px] font-medium">
-                      <AlertTriangle className="h-3.5 w-3.5" />
-                      Tarif variable
-                    </span>
-                  )}
-                </div>
-                <div className="text-[11px] uppercase tracking-[0.18em] text-accent/80 font-medium mb-1">
-                  {flight.weekday}
-                </div>
-                <div className="font-serif text-2xl sm:text-3xl font-medium text-white mb-1">
-                  {flight.label}
-                </div>
-                <p className="text-sm text-cream/60 leading-relaxed">{flight.note}</p>
+                <DateCardContent flight={flight} />
               </div>
             </motion.div>
           ))}
@@ -117,5 +154,40 @@ export function FlightDatesSection() {
         </motion.div>
       </div>
     </section>
+  );
+}
+
+function DateCardContent({
+  flight,
+}: {
+  flight: (typeof FLIGHT_DATES)[number];
+}) {
+  return (
+    <>
+      <div className="flex items-start justify-between mb-3">
+        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/20 text-accent">
+          <Calendar className="h-5 w-5" />
+        </div>
+        {"highlighted" in flight && flight.highlighted && (
+          <Badge variant="gold">
+            <Star className="h-3 w-3 fill-current" />
+            Recommandé
+          </Badge>
+        )}
+        {"warning" in flight && flight.warning && (
+          <span className="inline-flex items-center gap-1 text-warning text-[11px] font-medium">
+            <AlertTriangle className="h-3.5 w-3.5" />
+            Tarif variable
+          </span>
+        )}
+      </div>
+      <div className="text-[11px] uppercase tracking-[0.18em] text-accent/80 font-medium mb-1">
+        {flight.weekday}
+      </div>
+      <div className="font-serif text-2xl sm:text-3xl font-medium text-white mb-1">
+        {flight.label}
+      </div>
+      <p className="text-sm text-cream/60 leading-relaxed">{flight.note}</p>
+    </>
   );
 }

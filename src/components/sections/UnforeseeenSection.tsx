@@ -81,7 +81,7 @@ export function UnforeseeenSection() {
             <ShieldCheck className="h-3.5 w-3.5" />
             Protection & garanties
           </Badge>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium text-white leading-tight text-balance">
+          <h2 className="fluid-h2 font-serif font-medium text-white text-balance">
             Et si quelque chose ne se passe pas comme prévu ?
           </h2>
           <p className="mt-4 text-base sm:text-lg text-cream/70 leading-relaxed text-pretty">

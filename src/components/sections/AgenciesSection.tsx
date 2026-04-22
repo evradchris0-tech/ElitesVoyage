@@ -17,7 +17,6 @@ interface AgencyCardProps {
   phones: readonly string[];
   phoneNumberKeys: readonly WhatsAppNumberKey[];
   context: WhatsAppContext;
-  ctaLabel: string;
   trackEvent: string;
   mapsUrl: string;
   mapsEmbed: string;
@@ -31,7 +30,6 @@ function AgencyCard({
   phones,
   phoneNumberKeys,
   context,
-  ctaLabel,
   trackEvent,
   mapsUrl,
   mapsEmbed,
@@ -132,7 +130,7 @@ export function AgenciesSection() {
             <MapPin className="h-3.5 w-3.5" />
             Présence physique
           </Badge>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium text-navy leading-tight text-balance">
+          <h2 className="fluid-h2 font-serif font-medium text-navy text-balance">
             Deux agences physiques, à votre écoute
           </h2>
           <p className="mt-4 text-base sm:text-lg text-navy/70 leading-relaxed text-pretty">
@@ -150,7 +148,6 @@ export function AgenciesSection() {
             phones={[...AGENCIES.yaounde.phones]}
             phoneNumberKeys={["yaounde1", "yaounde2", "yaounde3"]}
             context="agence-yaounde"
-            ctaLabel="Prendre RDV à Yaoundé"
             trackEvent={CONVERSION_EVENTS.AGENCE_YAOUNDE}
             mapsUrl="https://maps.app.goo.gl/mballa2carefourjamot"
             mapsEmbed="https://maps.google.com/maps?q=Mballa+II+Carrefour+Jamot+Yaound%C3%A9+Cameroun&output=embed&z=15"
@@ -163,7 +160,6 @@ export function AgenciesSection() {
             phones={[...AGENCIES.douala.phones]}
             phoneNumberKeys={["principal", "douala2"]}
             context="agence-douala"
-            ctaLabel="Prendre RDV à Douala"
             trackEvent={CONVERSION_EVENTS.AGENCE_DOUALA}
             mapsUrl="https://maps.app.goo.gl/doualabali"
             mapsEmbed="https://maps.google.com/maps?q=Bali+Pharmacie+Koumassi+Douala+Cameroun&output=embed&z=15"

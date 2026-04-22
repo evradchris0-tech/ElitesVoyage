@@ -10,6 +10,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { BANK_DETAILS, AGENCIES } from "@/lib/config";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { trackConversion, CONVERSION_EVENTS } from "@/lib/track";
+import { haptic } from "@/lib/haptics";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 
 function IBANDisplay({ iban }: { iban: string }) {
@@ -18,6 +19,7 @@ function IBANDisplay({ iban }: { iban: string }) {
   async function copyIBAN() {
     await navigator.clipboard.writeText(iban);
     setCopied(true);
+    haptic("success");
     trackConversion(CONVERSION_EVENTS.COPY_IBAN);
     toast.success("IBAN copié ✓", {
       description: "Collez-le dans votre ordre de virement.",
@@ -36,7 +38,7 @@ function IBANDisplay({ iban }: { iban: string }) {
       </div>
       <button
         onClick={copyIBAN}
-        className="flex-shrink-0 inline-flex items-center gap-2 rounded-full bg-navy px-4 py-2 text-xs font-medium text-cream hover:bg-navy-light transition-all active:scale-95"
+        className="flex-shrink-0 inline-flex items-center gap-2 rounded-full bg-navy px-4 py-2.5 text-xs font-medium text-cream hover:bg-navy-light transition-all active:scale-95 tap-target"
       >
         {copied ? (
           <>
@@ -67,7 +69,7 @@ export function PaymentMethodsSection() {
             <CreditCard className="h-3.5 w-3.5" />
             Paiement sécurisé
           </Badge>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium text-navy leading-tight text-balance">
+          <h2 className="fluid-h2 font-serif font-medium text-navy text-balance">
             Comment payer en toute sécurité
           </h2>
           <p className="mt-4 text-base sm:text-lg text-navy/70 leading-relaxed text-pretty">

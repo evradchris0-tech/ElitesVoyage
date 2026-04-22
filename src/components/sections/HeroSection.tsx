@@ -9,6 +9,7 @@ import { CountdownBanner } from "@/components/layout/CountdownBanner";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { trackConversion, CONVERSION_EVENTS } from "@/lib/track";
+import { haptic } from "@/lib/haptics";
 import { formatXAF, CAMPAIGN } from "@/lib/config";
 
 export function HeroSection() {
@@ -64,7 +65,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-medium text-white leading-[1.05] tracking-tight text-balance"
+              className="fluid-h1 font-serif font-medium text-white text-balance"
             >
               Paris 2026,{" "}
               <span className="italic text-accent">en toute sérénité.</span>
@@ -126,12 +127,13 @@ export function HeroSection() {
                 asChild
                 variant="cta"
                 size="xl"
-                className="animate-pulse-soft"
-                onClick={() =>
+                className="animate-pulse-soft cta-shine w-full sm:w-auto tap-target"
+                onClick={() => {
+                  haptic("medium");
                   trackConversion(CONVERSION_EVENTS.HERO_INSCRIPTION, {
                     source: "hero-primary",
-                  })
-                }
+                  });
+                }}
               >
                 <a
                   href={buildWhatsAppLink("inscription-principal")}
@@ -142,7 +144,7 @@ export function HeroSection() {
                   Je réserve la place de mon enfant
                 </a>
               </Button>
-              <Button asChild variant="outline-light" size="xl">
+              <Button asChild variant="outline-light" size="xl" className="w-full sm:w-auto tap-target">
                 <a href="#offre">
                   Voir l'offre complète
                   <ArrowDown className="h-4 w-4" />
