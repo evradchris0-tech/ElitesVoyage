@@ -17,7 +17,6 @@ import { CAMPAIGN, formatXAF } from "@/lib/config";
 const ITEMS = [
   {
     id: "echec",
-    icon: "🎓",
     title: "Échec académique",
     content: (
       <>
@@ -31,7 +30,6 @@ const ITEMS = [
   },
   {
     id: "retard-visa",
-    icon: "🛂",
     title: "Retard de visa",
     content: (
       <>
@@ -45,7 +43,6 @@ const ITEMS = [
   },
   {
     id: "refus-visa",
-    icon: "🚫",
     title: "Refus de visa",
     content: (
       <>
@@ -105,12 +102,9 @@ export function UnforeseeenSection() {
                 className="border-white/15"
               >
                 <AccordionTrigger className="text-white hover:text-accent text-left">
-                  <span className="flex items-center gap-3">
-                    <span className="text-2xl" aria-hidden>{item.icon}</span>
-                    <span>{item.title}</span>
-                  </span>
+                  <span>{item.title}</span>
                 </AccordionTrigger>
-                <AccordionContent className="text-cream/70 pl-11">
+                <AccordionContent className="text-cream/70">
                   {item.content}
                 </AccordionContent>
               </AccordionItem>
