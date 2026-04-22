@@ -174,30 +174,19 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="hidden lg:block"
           >
-            <div className="relative aspect-[3/4] w-full max-w-md ml-auto rounded-3xl overflow-hidden shadow-raised border border-white/10">
-              <div className="absolute inset-0 bg-gradient-to-br from-accent/40 to-navy" />
+            <div className="relative aspect-[3/4] w-full max-w-md ml-auto rounded-3xl overflow-hidden">
               <Image
                 src="/newvisuel.jpeg"
-                alt="Mobilité étudiante — partir sereinement"
+                alt="Mobilité étudiante — flyer visuel"
                 fill
                 loading="lazy"
                 sizes="(max-width: 1024px) 0px, 400px"
-                quality={72}
+                quality={90}
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/20 to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6">
-                <div className="font-serif italic text-white text-lg leading-snug mb-2">
-                  « Les plus beaux horizons commencent souvent par un simple
-                  décollage. »
-                </div>
-                <div className="text-xs text-accent uppercase tracking-wider">
-                  — Elites Voyages
-                </div>
-              </div>
-              <div className="absolute top-5 left-5 rounded-full bg-white/90 px-3 py-1.5 text-[10px] uppercase tracking-wider text-navy font-semibold">
-                Yaoundé ✈ Paris
-              </div>
+              {/* Effet d'incrustation avec dégradé sur les bords pour fusionner avec le fond navy */}
+              <div className="absolute inset-0 rounded-3xl shadow-[inset_0_0_80px_30px_rgba(11,37,69,1)] pointer-events-none" />
+              <div className="absolute inset-0 rounded-3xl ring-1 ring-inset ring-navy pointer-events-none" />
             </div>
           </motion.div>
         </div>
