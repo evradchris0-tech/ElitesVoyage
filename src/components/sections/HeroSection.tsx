@@ -45,7 +45,7 @@ export function HeroSection() {
       <div className="container-wide relative pb-20 pt-10 sm:pt-14 lg:pt-20">
         <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-16 items-center">
           {/* LEFT */}
-          <div className="max-w-2xl">
+          <div className="w-full max-w-2xl">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

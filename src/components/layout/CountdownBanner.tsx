@@ -54,7 +54,7 @@ export function CountdownBanner({ variant = "hero", className }: CountdownBanner
     return (
       <div
         className={cn(
-          "rounded-full border border-accent/40 bg-white/10 px-5 py-2.5 text-sm text-white/90 backdrop-blur",
+          "w-full rounded-2xl border border-accent/40 bg-white/10 px-4 py-3 text-sm text-white/90 backdrop-blur text-pretty leading-snug",
           className,
         )}
       >
@@ -68,7 +68,7 @@ export function CountdownBanner({ variant = "hero", className }: CountdownBanner
   return (
     <div
       className={cn(
-        "inline-flex items-center gap-3 rounded-full px-4 py-2 text-sm font-medium backdrop-blur border",
+        "inline-flex flex-wrap items-center gap-2 rounded-2xl px-4 py-2 text-sm font-medium backdrop-blur border",
         isHero
           ? "bg-white/10 border-white/25 text-white"
           : "bg-accent/10 border-accent/40 text-navy",
