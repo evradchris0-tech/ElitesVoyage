@@ -57,7 +57,7 @@ export function HeroSection() {
                 Offre officielle Mobilité 2026
               </Badge>
               <Badge variant="outline" className="border-white/30 text-white/80 bg-white/5">
-                Membre IATA · Brussels Airlines
+                Membre IATA
               </Badge>
             </motion.div>
 
@@ -82,7 +82,8 @@ export function HeroSection() {
               <span className="font-semibold text-white">
                 Saint Jean, Prépa Vogt, SJM, GPGE
               </span>{" "}
-              et Saint Jean Ingénieur.
+              et{" "}
+              <span className="font-semibold text-white">Saint Jean Ingénieur</span>.
             </motion.p>
 
             {/* Price block */}
@@ -121,7 +122,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.65 }}
-              className="mt-8 flex flex-col sm:flex-row gap-3"
+              className="mt-8 flex flex-col gap-3 sm:flex-row"
             >
               <Button
                 asChild
@@ -145,7 +146,7 @@ export function HeroSection() {
                 </a>
               </Button>
               <Button asChild variant="outline-light" size="xl" className="w-full sm:w-auto tap-target">
-                <a href="#offre">
+                <a href="#offre" className="flex items-center justify-center gap-2">
                   Voir l'offre complète
                   <ArrowDown className="h-4 w-4" />
                 </a>
@@ -176,14 +177,12 @@ export function HeroSection() {
             <div className="relative aspect-[3/4] w-full max-w-md ml-auto rounded-3xl overflow-hidden shadow-raised border border-white/10">
               <div className="absolute inset-0 bg-gradient-to-br from-accent/40 to-navy" />
               <Image
-                src="/hero-motivation.png"
+                src="/newvisuel.jpeg"
                 alt="Mobilité étudiante — partir sereinement"
                 fill
                 loading="lazy"
                 sizes="(max-width: 1024px) 0px, 400px"
                 quality={72}
-                placeholder="blur"
-                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAn/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdSgD/2Q=="
                 className="object-cover mix-blend-luminosity opacity-85"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/20 to-transparent" />

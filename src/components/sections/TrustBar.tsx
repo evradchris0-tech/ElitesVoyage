@@ -11,8 +11,8 @@ const items = [
   },
   {
     icon: Plane,
-    title: "Brussels Airlines",
-    sub: "Partenaire aérien officiel",
+    title: "Air France · Lufthansa",
+    sub: "Partenaires aériens officiels",
   },
   {
     icon: Building2,
@@ -22,7 +22,7 @@ const items = [
   {
     icon: GraduationCap,
     title: "Programmes partenaires",
-    sub: "Saint Jean · Prépa Vogt · SJM · GPGE",
+    sub: "Saint Jean · Prépa Vogt · SJM · GPGE · Saint Jean Ingénieur",
   },
 ];
 

@@ -60,7 +60,7 @@ export const AGENCIES = {
     city: "Yaoundé",
     address: "Mballa II, Carrefour Jamot",
     email: "sales-yaounde@elites-voyages.com",
-    phones: ["237650636626", "237697320065", "237694237002"],
+    phones: ["237696792300"],
     mapsEmbed:
       "https://www.google.com/maps?q=Mballa+II+Carrefour+Jamot+Yaound%C3%A9&output=embed",
   },

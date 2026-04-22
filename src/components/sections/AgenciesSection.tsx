@@ -139,7 +139,7 @@ export function AgenciesSection() {
             address={AGENCIES.yaounde.address}
             email={AGENCIES.yaounde.email}
             phones={[...AGENCIES.yaounde.phones]}
-            phoneNumberKeys={["yaounde1", "yaounde2", "yaounde3"]}
+            phoneNumberKeys={["yaounde1"]}
             context="agence-yaounde"
             trackEvent={CONVERSION_EVENTS.AGENCE_YAOUNDE}
             mapsUrl="https://maps.app.goo.gl/mballa2carefourjamot"

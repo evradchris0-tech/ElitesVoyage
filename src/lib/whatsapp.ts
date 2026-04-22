@@ -1,9 +1,7 @@
 export const WHATSAPP_NUMBERS = {
   principal: "237672429849",
   douala2: "237690131011",
-  yaounde1: "237650636626",
-  yaounde2: "237697320065",
-  yaounde3: "237694237002",
+  yaounde1: "237696792300",
 } as const;
 
 export type WhatsAppNumberKey = keyof typeof WHATSAPP_NUMBERS;

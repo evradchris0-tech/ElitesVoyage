@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import {
   Plane,
   Luggage,
@@ -8,6 +9,7 @@ import {
   Bus,
   Ticket,
   Phone,
+  GraduationCap,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -16,12 +18,12 @@ import { BogolanDivider } from "@/components/PlaneIcon";
 const INCLUDES = [
   {
     icon: Plane,
-    title: "Vol Brussels Airlines",
+    title: "Billet d'avion",
     text: "Yaoundé NSIMALEN → Paris Charles de Gaulle. Opéré par le groupe Lufthansa.",
   },
   {
     icon: Luggage,
-    title: "3 bagages × 23 kg + 10 kg cabine",
+    title: "Franchise bagages : 3 × 23 kg + 10 kg cabine",
     text: "Une large franchise pour emporter tout ce dont votre enfant a besoin.",
   },
   {
@@ -43,6 +45,17 @@ const INCLUDES = [
     icon: Phone,
     title: "Suivi personnalisé",
     text: "Avant, pendant et après le voyage de votre enfant — vous êtes tenu informé.",
+  },
+  {
+    icon: GraduationCap,
+    title: "Partenaire Studely",
+    text: "Solution de financement études à l'étranger — accompagnement de votre dossier de garantie locative.",
+    logo: "/sytudely.jpg",
+  },
+  {
+    icon: Plane,
+    title: "Air France",
+    text: "Possibilité de vol Air France selon disponibilités et itinéraires — demandez à notre équipe.",
   },
 ];
 
@@ -82,9 +95,21 @@ export function OfferSection() {
             >
               <Card className="h-full p-6 hover:shadow-raised hover:-translate-y-1 transition-all duration-300">
                 <CardContent className="p-0 space-y-3">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-accent/20 to-accent-warm/10 text-navy">
-                    <item.icon className="h-6 w-6" />
-                  </div>
+                  {"logo" in item && item.logo ? (
+                    <div className="relative h-10 w-24">
+                      <Image
+                        src={item.logo}
+                        alt={item.title}
+                        fill
+                        className="object-contain object-left"
+                        sizes="96px"
+                      />
+                    </div>
+                  ) : (
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-accent/20 to-accent-warm/10 text-navy">
+                      <item.icon className="h-6 w-6" />
+                    </div>
+                  )}
                   <h3 className="font-serif text-xl font-medium text-navy leading-snug">
                     {item.title}
                   </h3>

@@ -44,17 +44,18 @@ export function FlightDatesSection() {
           transition={{ duration: 0.5 }}
           className="max-w-2xl mb-14"
         >
-          <Badge variant="gold" className="mb-4">
+          <Badge variant="gold" className="mb-4 bg-white/10 border border-accent/40">
             <Calendar className="h-3.5 w-3.5" />
-            5 créneaux de départ
+            5 dates de départ
           </Badge>
           <h2 className="fluid-h2 font-serif font-medium text-white text-balance">
-            Choisissez votre date de départ
+            Dates de départ officielles de l'Université Saint Jean
           </h2>
           <p className="mt-4 text-base sm:text-lg text-cream/70 leading-relaxed text-pretty">
-            Cinq créneaux organisés en groupe, août–septembre 2026, pour tous les
-            programmes partenaires. La date définitive est confirmée en
-            concertation avec votre établissement.
+            Ces dates sont fixées par l'établissement Saint Jean pour chaque
+            filière. Votre enfant part avec son groupe de programme (Saint
+            Jean, Prépa Vogt, SJM, GPGE ou Saint Jean Ingénieur). La date
+            exacte vous est confirmée lors de l'inscription.
           </p>
         </motion.div>
 
@@ -138,8 +139,8 @@ export function FlightDatesSection() {
           className="flex flex-col sm:flex-row items-center justify-between gap-5 mt-4"
         >
           <p className="text-sm text-cream/60 italic text-center sm:text-left">
-            La date de départ est confirmée après concertation avec votre
-            établissement.
+            Les dates sont définies par l'établissement Saint Jean selon chaque
+            filière. Contactez-nous pour connaître la date attribuée à votre enfant.
           </p>
           <Button asChild variant="outline-light" size="default">
             <a
@@ -168,12 +169,12 @@ function DateCardContent({
         <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/20 text-accent">
           <Calendar className="h-5 w-5" />
         </div>
-        {"highlighted" in flight && flight.highlighted && (
-          <Badge variant="gold">
-            <Star className="h-3 w-3 fill-current" />
-            Recommandé
-          </Badge>
-        )}
+      {"highlighted" in flight && flight.highlighted && (
+        <Badge variant="gold" className="bg-white/10 border border-accent/40 text-accent">
+          <Star className="h-3 w-3 fill-current" />
+          Date prioritaire
+        </Badge>
+      )}
         {"warning" in flight && flight.warning && (
           <span className="inline-flex items-center gap-1 text-warning text-[11px] font-medium">
             <AlertTriangle className="h-3.5 w-3.5" />

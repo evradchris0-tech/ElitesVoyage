@@ -49,14 +49,12 @@ export function SocialProofSection() {
         >
           <div className="relative h-72 sm:h-80 lg:h-96 w-full">
             <Image
-              src="/hero-motivation.png"
+              src="/newvisuel.jpeg"
               alt="Motivation étudiante — Elites Voyages"
               fill
               loading="lazy"
               quality={70}
               sizes="(max-width: 768px) 100vw, 1200px"
-              placeholder="blur"
-              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAn/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdSgD/2Q=="
               className="object-cover object-center"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/70 to-transparent" />
