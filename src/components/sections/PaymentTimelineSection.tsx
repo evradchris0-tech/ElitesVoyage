@@ -73,36 +73,49 @@ export function PaymentTimelineSection() {
         </motion.div>
 
         {/* TIMELINE */}
-        <div className="relative">
-          {/* line desktop */}
-          <div className="hidden md:block absolute top-[54px] left-[8%] right-[8%] h-[2px] bg-gradient-to-r from-accent-warm via-accent to-accent/50" />
-
-          <div className="grid gap-6 md:grid-cols-3 relative">
+        <div>
+          {/* ── Dot row (line lives here, perfectly centered on dots) ── */}
+          <div className="relative grid md:grid-cols-3 mb-4">
+            {/* connecting line — spans between outer dot centers */}
+            <div
+              aria-hidden
+              className="hidden md:block absolute top-1/2 -translate-y-1/2 left-[16.667%] right-[16.667%] h-[2px] bg-gradient-to-r from-accent-warm via-accent to-accent/40"
+            />
             {STEPS.map((step, i) => (
               <motion.div
-                key={step.label}
+                key={`dot-${step.label}`}
+                initial={{ opacity: 0, scale: 0.6 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.4, delay: i * 0.15 }}
+                className="flex justify-center relative z-10"
+              >
+                <div
+                  className={cn(
+                    "h-[28px] w-[28px] rounded-full flex items-center justify-center border-4 border-cream",
+                    step.highlighted
+                      ? "bg-accent-warm shadow-[0_0_0_6px_rgba(231,111,81,0.15)]"
+                      : "bg-navy",
+                  )}
+                >
+                  {step.highlighted && (
+                    <Star className="h-3 w-3 text-white fill-current" />
+                  )}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* ── Card row ── */}
+          <div className="grid gap-6 md:grid-cols-3">
+            {STEPS.map((step, i) => (
+              <motion.div
+                key={`card-${step.label}`}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.5, delay: i * 0.15 }}
-                className="relative"
               >
-                {/* dot */}
-                <div className="flex justify-center mb-4">
-                  <div
-                    className={cn(
-                      "relative h-[28px] w-[28px] rounded-full flex items-center justify-center border-4 border-cream",
-                      step.highlighted
-                        ? "bg-accent-warm shadow-[0_0_0_6px_rgba(231,111,81,0.15)]"
-                        : "bg-navy",
-                    )}
-                  >
-                    {step.highlighted && (
-                      <Star className="h-3 w-3 text-white fill-current" />
-                    )}
-                  </div>
-                </div>
-
                 <div
                   className={cn(
                     "rounded-2xl border-2 p-6 text-center transition-all h-full",
@@ -127,7 +140,8 @@ export function PaymentTimelineSection() {
                   </div>
                   {step.highlighted && (
                     <Badge variant="warm" className="mt-1">
-                      ⭐ {step.note}
+                      <Star className="h-3 w-3 fill-current" />
+                      {step.note}
                     </Badge>
                   )}
                   {!step.highlighted && (
