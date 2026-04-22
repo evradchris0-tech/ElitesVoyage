@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --navy: #0b2545;
+    --navy-light: #13315c;
+    --accent: #d4a373;
+    --accent-warm: #e76f51;
+    --cream: #faf9f6;
+    --gold: #c89f5c;
+    --whatsapp: #25d366;
+    --success: #22c55e;
+    --warning: #f59e0b;
+
+    --background: 40 33% 97%;
+    --foreground: 213 62% 16%;
+    --muted: 40 20% 92%;
+    --muted-foreground: 213 20% 40%;
+    --border: 35 25% 85%;
+    --input: 35 25% 85%;
+    --ring: 213 62% 16%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-cream text-navy antialiased;
+    font-family: "Manrope", system-ui, sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: "Fraunces", Georgia, serif;
+    font-feature-settings: "liga" 1, "dlig" 1;
+  }
+
+
+  ::selection {
+    @apply bg-accent-warm/30 text-navy;
+  }
+}
+
+@layer components {
+  .container-tight {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-6 lg:px-8;
+  }
+
+  .container-wide {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8;
+  }
+
+  .section-spacing {
+    @apply py-16 sm:py-20 lg:py-28;
+  }
+
+  .pattern-divider {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='24' viewBox='0 0 120 24'><g fill='none' stroke='%23D4A373' stroke-width='1.2' opacity='0.5'><path d='M0 12h30'/><path d='M60 2v20'/><path d='M90 12h30'/><circle cx='45' cy='12' r='3'/><circle cx='75' cy='12' r='3'/><path d='M38 12l-4-4m4 4l-4 4'/><path d='M82 12l4-4m-4 4l4 4'/></g></svg>");
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 24px;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
