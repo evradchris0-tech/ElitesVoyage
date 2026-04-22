@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PhoneLink } from "@/components/PhoneLink";
+import { LazyMap } from "@/components/LazyMap";
 import { AGENCIES } from "@/lib/config";
 import { buildWhatsAppLink, type WhatsAppContext, type WhatsAppNumberKey } from "@/lib/whatsapp";
 import { trackConversion, CONVERSION_EVENTS } from "@/lib/track";
@@ -43,21 +44,13 @@ function AgencyCard({
       transition={{ duration: 0.55, delay }}
     >
       <Card className="h-full overflow-hidden hover:shadow-raised transition-shadow duration-300">
-        {/* Map */}
-        <div className="relative h-52 sm:h-60 bg-navy/10 overflow-hidden">
-          <iframe
-            src={mapsEmbed}
-            title={`Carte agence Elites Voyages ${city}`}
-            className="absolute inset-0 w-full h-full border-0"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
-          {/* overlay pin badge */}
-          <div className="absolute top-3 left-3 rounded-full bg-navy/90 backdrop-blur px-3 py-1.5 flex items-center gap-1.5 text-xs text-white font-medium">
-            <MapPin className="h-3.5 w-3.5 text-accent" />
-            {city}
-          </div>
-        </div>
+        <LazyMap
+          src={mapsEmbed}
+          title={`Carte agence Elites Voyages ${city}`}
+          className="relative h-52 sm:h-60"
+          fallbackHref={mapsUrl}
+          city={city}
+        />
 
         <CardContent className="p-6 space-y-5">
           <div>

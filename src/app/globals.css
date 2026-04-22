@@ -77,6 +77,19 @@
     }
   }
 
+  /* Respect reduced-data / Save-Data — drop decorative backgrounds and animations */
+  @media (prefers-reduced-data: reduce) {
+    .cta-shine::after {
+      display: none !important;
+    }
+    .animate-pulse-soft {
+      animation: none !important;
+    }
+    [style*="backgroundImage"] {
+      background-image: none !important;
+    }
+  }
+
   /* Nicer touch interaction — bigger tap areas and active state */
   a, button, [role="button"] {
     touch-action: manipulation;
