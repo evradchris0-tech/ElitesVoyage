@@ -183,7 +183,7 @@ export function HeroSection() {
                 loading="lazy"
                 sizes="(max-width: 1024px) 0px, 400px"
                 quality={72}
-                className="object-cover mix-blend-luminosity opacity-85"
+                className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/20 to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">
