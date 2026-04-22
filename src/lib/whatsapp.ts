@@ -1,6 +1,6 @@
 export const WHATSAPP_NUMBERS = {
   principal: "237672429849",
-  douala2: "237690131011",
+  douala1: "237686469684",
   yaounde1: "237696792300",
 } as const;
 

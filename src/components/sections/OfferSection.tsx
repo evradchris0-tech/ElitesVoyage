@@ -19,7 +19,7 @@ const INCLUDES = [
   {
     icon: Plane,
     title: "Billet d'avion",
-    text: "Yaoundé NSIMALEN → Paris Charles de Gaulle. Opéré par le groupe Lufthansa.",
+    text: "Yaoundé NSIMALEN → Paris Charles de Gaulle. Vol opéré par Brussels Airlines du groupe Lufthansa.",
   },
   {
     icon: Luggage,

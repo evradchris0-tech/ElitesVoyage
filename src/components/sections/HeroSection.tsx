@@ -57,7 +57,7 @@ export function HeroSection() {
                 Offre officielle Mobilité 2026
               </Badge>
               <Badge variant="outline" className="border-white/30 text-white/80 bg-white/5">
-                Membre IATA
+                Membre IATA · Brussels Airlines
               </Badge>
             </motion.div>
 

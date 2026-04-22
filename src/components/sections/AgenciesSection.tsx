@@ -151,7 +151,7 @@ export function AgenciesSection() {
             address={AGENCIES.douala.address}
             email={AGENCIES.douala.email}
             phones={[...AGENCIES.douala.phones]}
-            phoneNumberKeys={["yaounde1"]}
+            phoneNumberKeys={["douala1"]}
             context="agence-douala"
             trackEvent={CONVERSION_EVENTS.AGENCE_DOUALA}
             mapsUrl="https://maps.app.goo.gl/doualabali"
