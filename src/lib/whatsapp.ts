@@ -46,7 +46,7 @@ const messages: Record<WhatsAppContext, string> = {
 
 export function buildWhatsAppLink(
   context: WhatsAppContext,
-  number: WhatsAppNumberKey = "principal",
+  number: WhatsAppNumberKey = "yaounde1",
   extra?: string,
 ): string {
   const body = extra ? `${messages[context]}\n\n${extra}` : messages[context];
