@@ -80,7 +80,7 @@ export function HeroSection() {
               L'offre officielle de mobilité étudiante pour les parents des
               étudiants de{" "}
               <span className="font-semibold text-white">
-                Saint Jean, Prépa Vogt, SJM, GPGE
+                Prépa Vogt, SJM, GPGE
               </span>{" "}
               et{" "}
               <span className="font-semibold text-white">Saint Jean Ingénieur</span>.
