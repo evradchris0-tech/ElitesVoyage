@@ -146,8 +146,8 @@ export function AgenciesSection() {
             phoneNumberKeys={["yaounde1"]}
             context="agence-yaounde"
             trackEvent={CONVERSION_EVENTS.AGENCE_YAOUNDE}
-            mapsUrl="https://www.google.com/maps/search/?api=1&query=VGXF%2B5GQ%20Mballa%20II%20Carrefour%20Jamot%20Yaound%C3%A9%20Cameroun"
-            mapsEmbed="https://maps.google.com/maps?q=VGXF%2B5GQ+Mballa+II+Carrefour+Jamot+Yaound%C3%A9&t=&z=18&ie=UTF8&iwloc=&output=embed"
+            mapsUrl="https://www.google.com/maps/search/?api=1&query=%C3%89lites%20voyages%2C%20VGXF%2B5GQ%2C%20Yaound%C3%A9"
+            mapsEmbed="https://maps.google.com/maps?q=%C3%89lites+voyages%2C+VGXF%2B5GQ%2C+Yaound%C3%A9&t=&z=18&ie=UTF8&iwloc=&output=embed"
             delay={0.1}
           />
           <AgencyCard
@@ -158,8 +158,8 @@ export function AgenciesSection() {
             phoneNumberKeys={["douala1"]}
             context="agence-douala"
             trackEvent={CONVERSION_EVENTS.AGENCE_DOUALA}
-            mapsUrl="https://www.google.com/maps/search/?api=1&query=2MPW%2BC9%20Bali%20Pharmacie%20Koumassi%20Douala%20Cameroun"
-            mapsEmbed="https://maps.google.com/maps?q=2MPW%2BC9+Bali+Pharmacie+Koumassi+Douala&t=&z=18&ie=UTF8&iwloc=&output=embed"
+            mapsUrl="https://www.google.com/maps/search/?api=1&query=Elites%20Voyages%2C%20%C3%80%20c%C3%B4t%C3%A9%20station%20MRS%2C%20face%20pharmacie%2C%20Douala"
+            mapsEmbed="https://maps.google.com/maps?q=Elites+Voyages%2C+%C3%80+c%C3%B4t%C3%A9+station+MRS%2C+face+pharmacie%2C+Douala&t=&z=18&ie=UTF8&iwloc=&output=embed"
             delay={0.2}
           />
         </div>

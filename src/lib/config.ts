@@ -62,7 +62,7 @@ export const AGENCIES = {
     email: "sales-yaounde@elites-voyages.com",
     phones: ["237696792300"],
     mapsEmbed:
-      "https://maps.google.com/maps?q=VGXF%2B5GQ+Mballa+II+Carrefour+Jamot+Yaound%C3%A9&t=&z=18&ie=UTF8&iwloc=&output=embed",
+      "https://maps.google.com/maps?q=%C3%89lites+voyages%2C+VGXF%2B5GQ%2C+Yaound%C3%A9&t=&z=18&ie=UTF8&iwloc=&output=embed",
   },
   douala: {
     city: "Douala",
@@ -70,7 +70,7 @@ export const AGENCIES = {
     email: "sales-douala@elites-voyages.com",
     phones: ["237686469684"],
     mapsEmbed:
-      "https://maps.google.com/maps?q=2MPW%2BC9+Bali+Pharmacie+Koumassi+Douala&t=&z=18&ie=UTF8&iwloc=&output=embed",
+      "https://maps.google.com/maps?q=Elites+Voyages%2C+%C3%80+c%C3%B4t%C3%A9+station+MRS%2C+face+pharmacie%2C+Douala&t=&z=18&ie=UTF8&iwloc=&output=embed",
   },
 } as const;
 
