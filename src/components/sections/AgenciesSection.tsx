@@ -91,7 +91,11 @@ function AgencyCard({
               className="flex-1"
               onClick={() => trackConversion(trackEvent)}
             >
-              <a href={buildWhatsAppLink(context)} target="_blank" rel="noopener">
+              <a
+                href={buildWhatsAppLink(context, phoneNumberKeys[0] ?? "yaounde1")}
+                target="_blank"
+                rel="noopener"
+              >
                 Prendre RDV à {city}
               </a>
             </Button>
