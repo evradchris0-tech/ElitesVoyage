@@ -21,7 +21,7 @@ function IBANDisplay({ iban }: { iban: string }) {
     setCopied(true);
     haptic("success");
     trackConversion(CONVERSION_EVENTS.COPY_IBAN);
-    toast.success("IBAN copié ✓", {
+    toast.success("IBAN copié", {
       description: "Collez-le dans votre ordre de virement.",
       duration: 4000,
     });
@@ -130,10 +130,13 @@ export function PaymentMethodsSection() {
                     </div>
                   ))}
                 </div>
-                <div className="mt-8 rounded-2xl border border-whatsapp/30 bg-whatsapp/5 p-5 text-sm text-navy/80 leading-relaxed">
-                  <strong className="text-navy">✓ Reçu officiel remis sur place.</strong>{" "}
-                  Notre équipe dédiée vous accompagne pour le versement, répond à toutes vos
-                  questions et confirme immédiatement votre inscription.
+                <div className="mt-8 rounded-2xl border border-whatsapp/30 bg-whatsapp/5 p-5 text-sm text-navy/80 leading-relaxed flex items-start gap-3">
+                  <Check className="h-4 w-4 mt-0.5 text-whatsapp shrink-0" aria-hidden />
+                  <p>
+                    <strong className="text-navy">Reçu officiel remis sur place.</strong>{" "}
+                    Notre équipe dédiée vous accompagne pour le versement, répond à toutes vos
+                    questions et confirme immédiatement votre inscription.
+                  </p>
                 </div>
               </div>
             </TabsContent>

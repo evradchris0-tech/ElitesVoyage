@@ -102,7 +102,7 @@ export default function HomePage() {
       {/* §3 Offre — eager (first scroll target) */}
       <OfferSection />
 
-      {/* §4 Paiement en 3 temps ⭐ */}
+      {/* §4 Paiement en 3 temps */}
       <PaymentTimelineSection />
 
       {/* §5 Dates de vol */}

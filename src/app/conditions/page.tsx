@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Check } from "lucide-react";
 import { CAMPAIGN, formatXAF, BANK_DETAILS } from "@/lib/config";
 
 export const metadata: Metadata = {
@@ -69,7 +70,7 @@ export default function ConditionsPage() {
                 </thead>
                 <tbody>
                   {[
-                    { label: "Inscription (⭐ verrouille tarif + place)", amount: CAMPAIGN.inscriptionPrice, date: "14 avril 2026" },
+                    { label: "Inscription — verrouille tarif & place", amount: CAMPAIGN.inscriptionPrice, date: "14 avril 2026" },
                     { label: "2ᵉ versement", amount: CAMPAIGN.secondPayment, date: "30 mai 2026" },
                     { label: "3ᵉ versement (solde)", amount: CAMPAIGN.thirdPayment, date: "15 juillet 2026" },
                   ].map((row) => (
@@ -105,8 +106,8 @@ export default function ConditionsPage() {
                 "Billet flexible (modifications selon conditions tarifaires Brussels Airlines)",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3">
-                  <span className="mt-0.5 text-whatsapp">✓</span>
-                  {item}
+                  <Check className="h-4 w-4 mt-1 text-whatsapp shrink-0" aria-hidden />
+                  <span>{item}</span>
                 </li>
               ))}
             </ul>
@@ -197,8 +198,8 @@ export default function ConditionsPage() {
                 "Attestation de conformité fiscale",
               ].map((d) => (
                 <li key={d} className="flex items-start gap-3">
-                  <span className="text-accent mt-0.5">✓</span>
-                  {d}
+                  <Check className="h-4 w-4 mt-1 text-accent shrink-0" aria-hidden />
+                  <span>{d}</span>
                 </li>
               ))}
             </ul>
