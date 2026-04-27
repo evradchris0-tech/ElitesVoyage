@@ -74,7 +74,7 @@ export function Footer() {
                 <p className="text-cream/70 mb-2">{AGENCIES.douala.address}</p>
                 <PhoneLink
                   raw={AGENCIES.douala.phones[0]}
-                  number="principal"
+                  number="douala1"
                   context="agence-douala"
                   className="text-cream/80 text-[13px]"
                   showTel={false}

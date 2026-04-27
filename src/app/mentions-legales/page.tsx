@@ -38,8 +38,8 @@ export default function MentionsLegalesPage() {
                 <strong>Siège social :</strong> Mballa II, Carrefour Jamot, Yaoundé, Cameroun
               </p>
               <p><strong>Email :</strong> sales-yaounde@elites-voyages.com</p>
-              <p><strong>Téléphone Yaoundé :</strong> +237 650 63 66 26</p>
-              <p><strong>Téléphone Douala :</strong> +237 672 42 98 49</p>
+              <p><strong>Téléphone Yaoundé :</strong> +237 696 79 23 00</p>
+              <p><strong>Téléphone Douala :</strong> +237 686 46 96 84</p>
             </div>
           </section>
 
@@ -51,16 +51,13 @@ export default function MentionsLegalesPage() {
               <div className="rounded-2xl border border-accent/20 bg-white p-5 space-y-1">
                 <div className="font-semibold text-navy">Yaoundé</div>
                 <p>Mballa II, Carrefour Jamot</p>
-                <p className="text-navy/60">+237 650 63 66 26</p>
-                <p className="text-navy/60">+237 697 32 00 65</p>
-                <p className="text-navy/60">+237 694 23 70 02</p>
+                <p className="text-navy/60">+237 696 79 23 00</p>
                 <p className="text-navy/60">sales-yaounde@elites-voyages.com</p>
               </div>
               <div className="rounded-2xl border border-accent/20 bg-white p-5 space-y-1">
                 <div className="font-semibold text-navy">Douala</div>
                 <p>Bali, à côté Station MRS, face Pharmacie Koumassi</p>
-                <p className="text-navy/60">+237 672 42 98 49</p>
-                <p className="text-navy/60">+237 690 13 10 11</p>
+                <p className="text-navy/60">+237 686 46 96 84</p>
                 <p className="text-navy/60">sales-douala@elites-voyages.com</p>
               </div>
             </div>

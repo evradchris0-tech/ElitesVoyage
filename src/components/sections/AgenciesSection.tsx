@@ -142,7 +142,7 @@ export function AgenciesSection() {
             phoneNumberKeys={["yaounde1"]}
             context="agence-yaounde"
             trackEvent={CONVERSION_EVENTS.AGENCE_YAOUNDE}
-            mapsUrl="https://maps.app.goo.gl/mballa2carefourjamot"
+            mapsUrl="https://www.google.com/maps/search/?api=1&query=Mballa+II+Carrefour+Jamot+Yaound%C3%A9+Cameroun"
             mapsEmbed="https://maps.google.com/maps?q=Mballa+II+Carrefour+Jamot+Yaound%C3%A9+Cameroun&output=embed&z=15"
             delay={0.1}
           />
@@ -154,7 +154,7 @@ export function AgenciesSection() {
             phoneNumberKeys={["douala1"]}
             context="agence-douala"
             trackEvent={CONVERSION_EVENTS.AGENCE_DOUALA}
-            mapsUrl="https://maps.app.goo.gl/doualabali"
+            mapsUrl="https://www.google.com/maps/search/?api=1&query=Bali+Pharmacie+Koumassi+Douala+Cameroun"
             mapsEmbed="https://maps.google.com/maps?q=Bali+Pharmacie+Koumassi+Douala+Cameroun&output=embed&z=15"
             delay={0.2}
           />
