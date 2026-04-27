@@ -8,6 +8,7 @@ import { Footer } from "@/components/layout/Footer";
 import { WhatsAppFloat } from "@/components/layout/WhatsAppFloat";
 import { StickyCTA } from "@/components/layout/StickyCTA";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
+import { MobileAnchorBar } from "@/components/layout/MobileAnchorBar";
 import type { Viewport } from "next";
 
 import "./globals.css";
@@ -103,6 +104,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="font-sans">
         <ScrollProgress />
         <Header />
+        <MobileAnchorBar />
         <main>{children}</main>
         <Footer />
         <WhatsAppFloat />

@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { TrustBar } from "@/components/sections/TrustBar";
 import { OfferSection } from "@/components/sections/OfferSection";
+import { MobileQuickInfo } from "@/components/sections/MobileQuickInfo";
 import { SectionSkeleton } from "@/components/SectionSkeleton";
 
 /* Below-the-fold sections lazy-loaded — parallel chunking + progressive render.
@@ -91,6 +92,9 @@ export default function HomePage() {
     <>
       {/* §1 Hero — eager (above the fold) */}
       <HeroSection />
+
+      {/* §1.5 Mobile-only quick info panel — l'essentiel à 1 tap */}
+      <MobileQuickInfo />
 
       {/* §2 Trust bar — eager (directly below hero, small) */}
       <TrustBar />
