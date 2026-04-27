@@ -146,8 +146,8 @@ export function AgenciesSection() {
             phoneNumberKeys={["yaounde1"]}
             context="agence-yaounde"
             trackEvent={CONVERSION_EVENTS.AGENCE_YAOUNDE}
-            mapsUrl="https://www.google.com/maps/search/?api=1&query=Mballa+II+Carrefour+Jamot+Yaound%C3%A9+Cameroun"
-            mapsEmbed="https://maps.google.com/maps?q=Mballa+II+Carrefour+Jamot+Yaound%C3%A9+Cameroun&output=embed&z=15"
+            mapsUrl="https://www.google.com/maps/search/?api=1&query=VGXF%2BGF5+Yaound%C3%A9+Cameroun"
+            mapsEmbed="https://www.google.com/maps?q=VGXF%2BGF5+Yaound%C3%A9+Cameroun&output=embed&z=18"
             delay={0.1}
           />
           <AgencyCard
@@ -158,8 +158,8 @@ export function AgenciesSection() {
             phoneNumberKeys={["douala1"]}
             context="agence-douala"
             trackEvent={CONVERSION_EVENTS.AGENCE_DOUALA}
-            mapsUrl="https://www.google.com/maps/search/?api=1&query=Bali+Pharmacie+Koumassi+Douala+Cameroun"
-            mapsEmbed="https://maps.google.com/maps?q=Bali+Pharmacie+Koumassi+Douala+Cameroun&output=embed&z=15"
+            mapsUrl="https://www.google.com/maps/search/?api=1&query=2MPW%2BCF8+Douala+Cameroun"
+            mapsEmbed="https://www.google.com/maps?q=2MPW%2BCF8+Douala+Cameroun&output=embed&z=18"
             delay={0.2}
           />
         </div>
