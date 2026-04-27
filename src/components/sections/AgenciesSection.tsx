@@ -146,8 +146,8 @@ export function AgenciesSection() {
             phoneNumberKeys={["yaounde1"]}
             context="agence-yaounde"
             trackEvent={CONVERSION_EVENTS.AGENCE_YAOUNDE}
-            mapsUrl="https://www.google.com/maps/search/?api=1&query=VGXF%2B5GQ+Yaound%C3%A9+Cameroun"
-            mapsEmbed="https://www.google.com/maps?q=VGXF%2B5GQ+Yaound%C3%A9+Cameroun&output=embed&z=18"
+            mapsUrl="https://www.google.com/maps/search/?api=1&query=VGXF%2B5GQ%20Mballa%20II%20Carrefour%20Jamot%20Yaound%C3%A9%20Cameroun"
+            mapsEmbed="https://maps.google.com/maps?q=VGXF%2B5GQ+Mballa+II+Carrefour+Jamot+Yaound%C3%A9&t=&z=18&ie=UTF8&iwloc=&output=embed"
             delay={0.1}
           />
           <AgencyCard
@@ -158,8 +158,8 @@ export function AgenciesSection() {
             phoneNumberKeys={["douala1"]}
             context="agence-douala"
             trackEvent={CONVERSION_EVENTS.AGENCE_DOUALA}
-            mapsUrl="https://www.google.com/maps/search/?api=1&query=2MPW%2BC9+Douala+Cameroun"
-            mapsEmbed="https://www.google.com/maps?q=2MPW%2BC9+Douala+Cameroun&output=embed&z=18"
+            mapsUrl="https://www.google.com/maps/search/?api=1&query=2MPW%2BC9%20Bali%20Pharmacie%20Koumassi%20Douala%20Cameroun"
+            mapsEmbed="https://maps.google.com/maps?q=2MPW%2BC9+Bali+Pharmacie+Koumassi+Douala&t=&z=18&ie=UTF8&iwloc=&output=embed"
             delay={0.2}
           />
         </div>
