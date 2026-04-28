@@ -74,7 +74,7 @@ export function FlightDatesSection() {
             Plusieurs vagues de départ sont organisées tout au long du mois
             d'août pour s'adapter au calendrier de chaque famille. Le vol du{" "}
             <strong className="text-white not-italic">26 août</strong> reste le
-            créneau officiel recommandé.
+            créneau recommandé.
           </p>
         </motion.div>
 
