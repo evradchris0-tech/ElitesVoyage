@@ -71,7 +71,10 @@ export function FlightDatesSection() {
             Un départ, organisé par l'Université Saint Jean
           </h2>
           <p className="mt-4 text-base sm:text-lg text-cream/70 leading-relaxed text-pretty">
-            Des départs en vague sont organisés.
+            Plusieurs vagues de départ sont organisées tout au long du mois
+            d'août pour s'adapter au calendrier de chaque famille. Le vol du{" "}
+            <strong className="text-white not-italic">26 août</strong> reste le
+            créneau officiel recommandé.
           </p>
         </motion.div>
 
