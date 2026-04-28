@@ -115,22 +115,19 @@ export default function ConditionsPage() {
 
           <section>
             <h2 className="font-serif text-xl font-semibold text-navy mb-4">
-              4. Dates de vol proposées
+              4. Date de vol
             </h2>
-            <div className="rounded-2xl border border-accent/20 bg-white p-6 space-y-2">
-              <p className="mb-3 text-navy/60 italic">La date définitive est confirmée en concertation avec l'établissement.</p>
-              {[
-                "20 août 2026 (jeudi) — Départ anticipé, préparation sereine",
-                "26 août 2026 (mercredi) — Tarif susceptible d'être majoré selon disponibilité",
-                "27 août 2026 (jeudi)",
-                "31 août 2026 (dimanche)",
-                "1er septembre 2026 (lundi) — Dernier créneau avant rentrée",
-              ].map((d) => (
-                <div key={d} className="flex items-start gap-2">
-                  <span className="text-accent mt-0.5">→</span>
-                  <span>{d}</span>
-                </div>
-              ))}
+            <div className="rounded-2xl border border-accent/20 bg-white p-6 space-y-3">
+              <p className="text-navy">
+                <strong>Mercredi 26 août 2026</strong> — Vol officiel groupé,
+                Yaoundé NSIMALEN (NSI) → Paris Charles de Gaulle (CDG).
+              </p>
+              <p className="text-navy/70">
+                Tous les étudiants des programmes partenaires (Saint Jean,
+                Saint Jean Ingénieur, Prépa Vogt, SJM, GPGE) partent le même
+                jour. Présence à l'aéroport 4 heures avant le décollage,
+                comptoir Elites Voyages dédié à l'enregistrement.
+              </p>
             </div>
           </section>
 

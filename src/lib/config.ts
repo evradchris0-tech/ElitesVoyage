@@ -13,36 +13,11 @@ export const CAMPAIGN = {
 
 export const FLIGHT_DATES = [
   {
-    date: "2026-08-20",
-    label: "20 août 2026",
-    weekday: "jeudi",
-    note: "Départ anticipé, préparation sereine",
-    highlighted: true,
-  },
-  {
     date: "2026-08-26",
     label: "26 août 2026",
     weekday: "mercredi",
-    note: "Tarif susceptible d'être majoré selon disponibilité",
-    warning: true,
-  },
-  {
-    date: "2026-08-27",
-    label: "27 août 2026",
-    weekday: "jeudi",
-    note: "Créneau très demandé",
-  },
-  {
-    date: "2026-08-31",
-    label: "31 août 2026",
-    weekday: "dimanche",
-    note: "Juste avant la rentrée",
-  },
-  {
-    date: "2026-09-01",
-    label: "1ᵉʳ septembre 2026",
-    weekday: "lundi",
-    note: "Dernier départ — rentrée immédiate",
+    note: "Date officielle de départ — confirmée par l'établissement Saint Jean",
+    highlighted: true,
   },
 ] as const;
 

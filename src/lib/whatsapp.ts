@@ -31,7 +31,7 @@ const messages: Record<WhatsAppContext, string> = {
   "info-remboursement":
     "Bonjour Elites Voyages, j'ai une question sur les conditions de remboursement (visa, échec académique).",
   "info-dates-vol":
-    "Bonjour Elites Voyages, je souhaite des informations sur les dates de vol disponibles en août-septembre 2026.",
+    "Bonjour Elites Voyages, je souhaite des informations sur le vol officiel du 26 août 2026 (Yaoundé-Paris).",
   "info-documents":
     "Bonjour Elites Voyages, j'aimerais savoir quels documents sont nécessaires pour mon enfant (passeport, admission, etc.).",
   "agence-yaounde":

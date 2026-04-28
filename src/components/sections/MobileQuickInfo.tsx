@@ -40,9 +40,9 @@ const ITEMS: QuickItem[] = [
   },
   {
     icon: Plane,
-    label: "Départs",
-    value: "5 dates",
-    sub: "Août — septembre 2026",
+    label: "Départ",
+    value: "26 août",
+    sub: "Vol officiel Saint Jean",
     href: "#dates",
   },
 ];
