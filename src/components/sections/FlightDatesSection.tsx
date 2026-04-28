@@ -71,9 +71,7 @@ export function FlightDatesSection() {
             Un départ, organisé par l'Université Saint Jean
           </h2>
           <p className="mt-4 text-base sm:text-lg text-cream/70 leading-relaxed text-pretty">
-            Tous les étudiants des programmes partenaires partent ensemble, le
-            même jour. Un seul vol, un seul groupe, un encadrement complet de
-            Yaoundé jusqu'à Paris.
+            Des départs en vague sont organisés.
           </p>
         </motion.div>
 
