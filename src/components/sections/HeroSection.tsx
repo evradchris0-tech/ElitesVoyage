@@ -162,7 +162,7 @@ export function HeroSection() {
             >
               <CountdownBanner variant="hero" />
               <p className="mt-2 text-xs text-cream/60 italic">
-                Tarif préférentiel garanti jusqu'au 14 avril 2026.
+                Tarif préférentiel garanti jusqu'au 10 mai 2026.
               </p>
             </motion.div>
           </div>

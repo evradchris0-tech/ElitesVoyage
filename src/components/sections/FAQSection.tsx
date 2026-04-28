@@ -23,7 +23,7 @@ const FAQ_ITEMS = [
   },
   {
     id: "q2",
-    question: "L'inscription de 250 000 FCFA est-elle remboursable ?",
+    question: "L'inscription de 300 000 FCFA est-elle remboursable ?",
     answer: `Oui, dans les cas suivants : (1) Échec académique signalé avant le 1er juillet 2026 → remboursement intégral de toute somme versée, sur justificatif officiel. (2) Refus de visa → remboursement de ${formatXAF(CAMPAIGN.refundOnVisaDenial)} (100 000 FCFA retenus pour frais de dossier). (3) Retard de visa → vol reprogrammé avec supplément, bagages conservés. Votre investissement est protégé.`,
   },
   {

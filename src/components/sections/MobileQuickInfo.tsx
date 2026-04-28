@@ -34,7 +34,7 @@ const ITEMS: QuickItem[] = [
   {
     icon: Calendar,
     label: "Tarif garanti jusqu'au",
-    value: "14 avril",
+    value: "10 mai",
     sub: "2026",
     href: "#offre",
   },

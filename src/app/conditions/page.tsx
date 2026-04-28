@@ -39,7 +39,7 @@ export default function ConditionsPage() {
                 <span className="text-2xl font-serif font-semibold text-navy">
                   {formatXAF(CAMPAIGN.totalPrice)}
                 </span>{" "}
-                — garanti jusqu'au <strong>14 avril 2026</strong> inclus.
+                — garanti jusqu'au <strong>10 mai 2026</strong> inclus.
               </p>
               <p>
                 <strong>Programmes partenaires éligibles :</strong> Institut Saint Jean,
@@ -70,9 +70,9 @@ export default function ConditionsPage() {
                 </thead>
                 <tbody>
                   {[
-                    { label: "Inscription — verrouille tarif & place", amount: CAMPAIGN.inscriptionPrice, date: "14 avril 2026" },
-                    { label: "2ᵉ versement", amount: CAMPAIGN.secondPayment, date: "30 mai 2026" },
-                    { label: "3ᵉ versement (solde)", amount: CAMPAIGN.thirdPayment, date: "15 juillet 2026" },
+                    { label: "Inscription — verrouille tarif & place", amount: CAMPAIGN.inscriptionPrice, date: "10 mai 2026" },
+                    { label: "2ᵉ versement", amount: CAMPAIGN.secondPayment, date: "10 juin 2026" },
+                    { label: "3ᵉ versement (solde)", amount: CAMPAIGN.thirdPayment, date: "10 juillet 2026" },
                   ].map((row) => (
                     <tr key={row.label} className="border-b border-accent/10 last:border-none">
                       <td className="px-5 py-4">{row.label}</td>

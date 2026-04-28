@@ -1,13 +1,13 @@
 export const CAMPAIGN = {
-  deadline: "2026-04-14T23:59:59+01:00",
-  totalPrice: 780_000,
-  inscriptionPrice: 250_000,
+  deadline: "2026-05-10T23:59:59+01:00",
+  totalPrice: 870_000,
+  inscriptionPrice: 300_000,
   secondPayment: 300_000,
-  thirdPayment: 230_000,
-  secondDeadline: "2026-05-30",
-  thirdDeadline: "2026-07-15",
+  thirdPayment: 270_000,
+  secondDeadline: "2026-06-10",
+  thirdDeadline: "2026-07-10",
   refundDeadline: "2026-07-01",
-  refundOnVisaDenial: 680_000,
+  refundOnVisaDenial: 770_000,
   generalTicketReservation: 2_500,
 } as const;
 

@@ -21,9 +21,9 @@ export type WhatsAppContext =
 
 const messages: Record<WhatsAppContext, string> = {
   "inscription-principal":
-    "Bonjour Elites Voyages,\n\nJe souhaite inscrire mon enfant à votre offre Mobilité Étudiante 2026 (Yaoundé-Paris, 780 000 FCFA).\n\nJe suis prêt à procéder au versement d'inscription de 250 000 FCFA. Pouvez-vous me guider pour la suite ?\n\nMerci.",
+    "Bonjour Elites Voyages,\n\nJe souhaite inscrire mon enfant à votre offre Mobilité Étudiante 2026 (Yaoundé-Paris, 870 000 FCFA).\n\nJe suis prêt à procéder au versement d'inscription de 300 000 FCFA. Pouvez-vous me guider pour la suite ?\n\nMerci.",
   "inscription-rapide":
-    "Bonjour Elites Voyages, je veux réserver la place de mon enfant pour le vol Yaoundé-Paris (offre 780 000 FCFA, inscription 250 000 FCFA). Comment procéder ?",
+    "Bonjour Elites Voyages, je veux réserver la place de mon enfant pour le vol Yaoundé-Paris (offre 870 000 FCFA, inscription 300 000 FCFA). Comment procéder ?",
   "info-generale":
     "Bonjour Elites Voyages, j'ai consulté votre site et j'aimerais quelques précisions sur votre offre Mobilité Étudiante 2026.",
   "info-paiement":
