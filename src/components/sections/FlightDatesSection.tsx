@@ -8,6 +8,7 @@ import {
   ShieldCheck,
   HeartHandshake,
   MapPinned,
+  CalendarClock,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -140,6 +141,39 @@ export function FlightDatesSection() {
               </p>
             </div>
           </div>
+        </motion.div>
+
+        {/* Flexibility note — possibilité de choisir un autre jour */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="mb-10 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5 rounded-2xl border border-accent/30 bg-accent/5 px-5 sm:px-6 py-5"
+        >
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent/20 text-accent">
+            <CalendarClock className="h-5 w-5" />
+          </div>
+          <div className="flex-1 space-y-1">
+            <div className="font-serif text-lg font-semibold text-white leading-tight">
+              Possibilité de choisir un autre jour de départ
+            </div>
+            <p className="text-sm text-cream/70 leading-relaxed">
+              Si la date du 26 août ne convient pas à votre situation, parlez-en
+              à notre équipe. Nous étudions ensemble une alternative selon les
+              disponibilités.
+            </p>
+          </div>
+          <Button asChild variant="outline-light" size="sm" className="shrink-0">
+            <a
+              href={buildWhatsAppLink("info-dates-vol")}
+              target="_blank"
+              rel="noopener"
+            >
+              <WhatsAppIcon className="h-4 w-4" />
+              Demander une autre date
+            </a>
+          </Button>
         </motion.div>
 
         {/* Reassuring micro-texts */}
