@@ -68,7 +68,7 @@ export function FlightDatesSection() {
             Date officielle de départ
           </Badge>
           <h2 className="fluid-h2 font-serif font-medium text-white text-balance">
-            Un départ unique, organisé par l'Université Saint Jean
+            Un départ, organisé par l'Université Saint Jean
           </h2>
           <p className="mt-4 text-base sm:text-lg text-cream/70 leading-relaxed text-pretty">
             Tous les étudiants des programmes partenaires partent ensemble, le
