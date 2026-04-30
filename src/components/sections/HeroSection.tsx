@@ -77,13 +77,10 @@ export function HeroSection() {
               transition={{ duration: 0.6, delay: 0.35 }}
               className="mt-6 text-base sm:text-lg text-cream/85 leading-relaxed text-pretty max-w-xl"
             >
-              L'offre officielle de mobilité étudiante pour les parents des
-              étudiants de{" "}
-              <span className="font-semibold text-white">
-                Prépa Vogt, SJM, GPGE
-              </span>{" "}
-              et{" "}
-              <span className="font-semibold text-white">Saint Jean Ingénieur</span>.
+              L'offre officielle de mobilité étudiante pensée pour les{" "}
+              <span className="font-semibold text-white">étudiants</span> et
+              leurs <span className="font-semibold text-white">parents</span>{" "}
+              qui s'envolent vers la France pour la rentrée 2026.
             </motion.p>
 
             {/* Price block */}

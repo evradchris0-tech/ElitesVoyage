@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     template: "%s · Elites Voyages",
   },
   description:
-    "Offre officielle de mobilité étudiante 2026 pour les parents d'étudiants admis à l'Institut Saint Jean, Prépa Vogt, SJM, GPGE et Saint Jean Ingénieur. Vol Yaoundé-Paris à 870 000 FCFA, inscription dès 300 000 FCFA, paiement en 3 fois. Tarif garanti jusqu'au 10 mai 2026.",
+    "Offre officielle de mobilité étudiante 2026 pour les étudiants camerounais et leurs parents qui partent étudier en France. Vol Yaoundé-Paris à 870 000 FCFA, inscription dès 300 000 FCFA, paiement en 3 fois. Tarif garanti jusqu'au 10 mai 2026.",
   keywords: [
     "Elites Voyages",
     "mobilité étudiante Cameroun",

@@ -21,7 +21,7 @@ const REASSURING_POINTS = [
   {
     icon: Users,
     title: "Départ en groupe encadré",
-    text: "Votre enfant ne voyage pas seul. Il part avec son groupe de programme (Saint Jean, Prépa Vogt, SJM, GPGE), accompagné par notre équipe.",
+    text: "Votre enfant ne voyage pas seul. Il part avec son groupe d'étudiants, accompagné par notre équipe du décollage à l'arrivée.",
   },
   {
     icon: MapPinned,
@@ -68,7 +68,7 @@ export function FlightDatesSection() {
             Date officielle de départ
           </Badge>
           <h2 className="fluid-h2 font-serif font-medium text-white text-balance">
-            Un départ, organisé par l'Université Saint Jean
+            Un départ organisé pour vos étudiants
           </h2>
           <p className="mt-4 text-base sm:text-lg text-cream/70 leading-relaxed text-pretty">
             Plusieurs vagues de départ sont organisées tout au long du mois
