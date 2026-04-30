@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Wallet, Coins, Calendar, Plane, ChevronRight } from "lucide-react";
-import { CAMPAIGN, formatXAF } from "@/lib/config";
+import { Wallet, Coins, Calendar, Plane, ChevronRight, MapPin } from "lucide-react";
+import { DEPARTURES, CAMPAIGN, formatXAF } from "@/lib/config";
 import { haptic } from "@/lib/haptics";
 import { cn } from "@/lib/utils";
 
@@ -25,25 +25,25 @@ const ITEMS: QuickItem[] = [
     accent: true,
   },
   {
-    icon: Wallet,
-    label: "Tarif total",
-    value: formatXAF(CAMPAIGN.totalPrice),
-    sub: "Paiement en 3 fois",
-    href: "#paiement",
+    icon: Plane,
+    label: "Départ Yaoundé",
+    value: "26 août",
+    sub: formatXAF(DEPARTURES.yaounde.totalPrice),
+    href: "#dates",
+  },
+  {
+    icon: MapPin,
+    label: "Départ Douala",
+    value: "30 août",
+    sub: `dès ${formatXAF(DEPARTURES.douala.totalPrice)}`,
+    href: "#dates",
   },
   {
     icon: Calendar,
-    label: "Tarif garanti jusqu'au",
+    label: "Réservez avant",
     value: "10 mai",
-    sub: "2026",
+    sub: "Tarif Yaoundé garanti",
     href: "#offre",
-  },
-  {
-    icon: Plane,
-    label: "Départ",
-    value: "26 août",
-    sub: "Vol officiel Saint Jean",
-    href: "#dates",
   },
 ];
 

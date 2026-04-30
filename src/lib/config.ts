@@ -1,3 +1,96 @@
+/** Status of a departure offering */
+export type DepartureStatus = "confirmed" | "pending-update";
+
+export interface DeparturePaymentStep {
+  label: string;
+  amount: number;
+  date: string;
+  dateShort: string;
+  note: string;
+  highlighted: boolean;
+}
+
+export interface Departure {
+  id: "yaounde" | "douala";
+  city: string;
+  airport: string;
+  airportCode: string;
+  flightDate: string;
+  flightDateLabel: string;
+  flightWeekday: string;
+  totalPrice: number;
+  inscriptionPrice: number;
+  reservationDeadline: string;
+  reservationDeadlineLabel: string;
+  status: DepartureStatus;
+  statusNote: string;
+  paymentSteps: DeparturePaymentStep[];
+  note: string;
+}
+
+export const DEPARTURES: Record<"yaounde" | "douala", Departure> = {
+  yaounde: {
+    id: "yaounde",
+    city: "Yaoundé",
+    airport: "NSIMALEN",
+    airportCode: "NSI",
+    flightDate: "2026-08-26",
+    flightDateLabel: "26 août 2026",
+    flightWeekday: "mercredi",
+    totalPrice: 870_000,
+    inscriptionPrice: 300_000,
+    reservationDeadline: "2026-05-10",
+    reservationDeadlineLabel: "10 mai 2026",
+    status: "confirmed",
+    statusNote: "Confirmé — Places limitées",
+    paymentSteps: [
+      {
+        label: "Inscription",
+        amount: 300_000,
+        date: "10 mai 2026",
+        dateShort: "10 mai",
+        note: "Verrouille votre tarif et votre place",
+        highlighted: true,
+      },
+      {
+        label: "2ᵉ versement",
+        amount: 300_000,
+        date: "10 juin 2026",
+        dateShort: "10 juin",
+        note: "À mi-parcours",
+        highlighted: false,
+      },
+      {
+        label: "3ᵉ versement",
+        amount: 270_000,
+        date: "10 juillet 2026",
+        dateShort: "10 juillet",
+        note: "Solde — bon voyage !",
+        highlighted: false,
+      },
+    ],
+    note: "Date officielle de départ — confirmée par l'établissement Saint Jean",
+  },
+  douala: {
+    id: "douala",
+    city: "Douala",
+    airport: "DOUALA INTL",
+    airportCode: "DLA",
+    flightDate: "2026-08-30",
+    flightDateLabel: "30 août 2026",
+    flightWeekday: "dimanche",
+    totalPrice: 750_000,
+    inscriptionPrice: 300_000,
+    reservationDeadline: "2026-06-30",
+    reservationDeadlineLabel: "fin juin 2026",
+    status: "pending-update",
+    statusNote: "Mise à jour en cours — Paiement libre en attendant confirmation",
+    paymentSteps: [],
+    note: "Échéancier de paiement en cours de finalisation",
+  },
+} as const;
+
+/** Legacy single-campaign values (Yaoundé defaults) */
 export const CAMPAIGN = {
   deadline: "2026-05-10T23:59:59+01:00",
   totalPrice: 870_000,
@@ -18,6 +111,13 @@ export const FLIGHT_DATES = [
     weekday: "mercredi",
     note: "Date officielle de départ — confirmée par l'établissement Saint Jean",
     highlighted: true,
+  },
+  {
+    date: "2026-08-30",
+    label: "30 août 2026",
+    weekday: "dimanche",
+    note: "Départ depuis Douala — détails en cours de finalisation",
+    highlighted: false,
   },
 ] as const;
 
@@ -66,3 +166,9 @@ export const SOCIALS = {
 export function formatXAF(amount: number): string {
   return new Intl.NumberFormat("fr-FR").format(amount) + " FCFA";
 }
+
+/** Lowest price among departures */
+export const LOWEST_PRICE = Math.min(
+  DEPARTURES.yaounde.totalPrice,
+  DEPARTURES.douala.totalPrice,
+);

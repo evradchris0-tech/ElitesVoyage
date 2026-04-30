@@ -9,6 +9,8 @@ export type WhatsAppNumberKey = keyof typeof WHATSAPP_NUMBERS;
 export type WhatsAppContext =
   | "inscription-principal"
   | "inscription-rapide"
+  | "reservation-yaounde"
+  | "reservation-douala"
   | "info-generale"
   | "info-paiement"
   | "info-remboursement"
@@ -21,9 +23,13 @@ export type WhatsAppContext =
 
 const messages: Record<WhatsAppContext, string> = {
   "inscription-principal":
-    "Bonjour Elites Voyages,\n\nJe souhaite inscrire mon enfant à votre offre Mobilité Étudiante 2026 (Yaoundé-Paris, 870 000 FCFA).\n\nJe suis prêt à procéder au versement d'inscription de 300 000 FCFA. Pouvez-vous me guider pour la suite ?\n\nMerci.",
+    "Bonjour Elites Voyages,\n\nJe souhaite inscrire mon enfant à votre offre Mobilité Étudiante 2026.\n\nJe suis prêt à procéder. Pouvez-vous me guider pour la suite ?\n\nMerci.",
   "inscription-rapide":
-    "Bonjour Elites Voyages, je veux réserver la place de mon enfant pour le vol Yaoundé-Paris (offre 870 000 FCFA, inscription 300 000 FCFA). Comment procéder ?",
+    "Bonjour Elites Voyages, je veux réserver la place de mon enfant pour le vol vers Paris (offre Mobilité Étudiante 2026). Comment procéder ?",
+  "reservation-yaounde":
+    "Bonjour Elites Voyages,\n\nJe souhaite réserver une place pour le départ du 26 août 2026 depuis Yaoundé (offre à 870 000 FCFA).\n\nJe suis prêt à procéder au versement d'inscription de 300 000 FCFA. Pouvez-vous me guider ?\n\nMerci.",
+  "reservation-douala":
+    "Bonjour Elites Voyages,\n\nJe souhaite réserver une place pour le départ du 30 août 2026 depuis Douala (offre à partir de 750 000 FCFA).\n\nPouvez-vous me communiquer les modalités de paiement et les détails mis à jour ?\n\nMerci.",
   "info-generale":
     "Bonjour Elites Voyages, j'ai consulté votre site et j'aimerais quelques précisions sur votre offre Mobilité Étudiante 2026.",
   "info-paiement":
@@ -31,7 +37,7 @@ const messages: Record<WhatsAppContext, string> = {
   "info-remboursement":
     "Bonjour Elites Voyages, j'ai une question sur les conditions de remboursement (visa, échec académique).",
   "info-dates-vol":
-    "Bonjour Elites Voyages, je souhaite des informations sur le vol officiel du 26 août 2026 (Yaoundé-Paris).",
+    "Bonjour Elites Voyages, je souhaite des informations sur les vols officiels (26 août depuis Yaoundé / 30 août depuis Douala).",
   "info-documents":
     "Bonjour Elites Voyages, j'aimerais savoir quels documents sont nécessaires pour mon enfant (passeport, admission, etc.).",
   "agence-yaounde":

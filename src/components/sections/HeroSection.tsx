@@ -10,7 +10,7 @@ import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { trackConversion, CONVERSION_EVENTS } from "@/lib/track";
 import { haptic } from "@/lib/haptics";
-import { formatXAF, CAMPAIGN } from "@/lib/config";
+import { formatXAF, CAMPAIGN, DEPARTURES, LOWEST_PRICE } from "@/lib/config";
 
 export function HeroSection() {
   return (
@@ -92,24 +92,26 @@ export function HeroSection() {
             >
               <div className="flex items-baseline gap-3 flex-wrap">
                 <span className="text-[11px] uppercase tracking-[0.2em] text-accent font-medium">
-                  Tarif tout compris
+                  Tarif groupe à partir de
                 </span>
               </div>
               <div className="mt-2 font-serif text-4xl sm:text-6xl font-semibold text-white tabular-nums leading-none">
-                {formatXAF(CAMPAIGN.totalPrice)}
+                {formatXAF(LOWEST_PRICE)}
               </div>
               <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-cream/90">
                 <span className="inline-flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full bg-accent-warm" />
-                  Inscription dès{" "}
-                  <strong className="text-accent-warm font-semibold">
-                    {formatXAF(CAMPAIGN.inscriptionPrice)}
+                  Yaoundé 26 août —{" "}
+                  <strong className="text-white font-semibold">
+                    {formatXAF(DEPARTURES.yaounde.totalPrice)}
                   </strong>
                 </span>
                 <span className="inline-flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                  Paiement en{" "}
-                  <strong className="text-white font-semibold">3 fois</strong>
+                  Douala 30 août —{" "}
+                  <strong className="text-white font-semibold">
+                    dès {formatXAF(DEPARTURES.douala.totalPrice)}
+                  </strong>
                 </span>
               </div>
             </motion.div>
@@ -159,7 +161,7 @@ export function HeroSection() {
             >
               <CountdownBanner variant="hero" />
               <p className="mt-2 text-xs text-cream/60 italic">
-                Tarif préférentiel garanti jusqu'au 10 mai 2026.
+                Tarif Yaoundé garanti jusqu'au 10 mai 2026. Douala : réservation avant fin juin.
               </p>
             </motion.div>
           </div>

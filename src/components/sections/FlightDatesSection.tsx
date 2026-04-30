@@ -9,13 +9,21 @@ import {
   HeartHandshake,
   MapPinned,
   CalendarClock,
+  Loader2,
+  CheckCircle2,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { FLIGHT_DATES } from "@/lib/config";
-import { buildWhatsAppLink } from "@/lib/whatsapp";
+import { DEPARTURES, type Departure, formatXAF } from "@/lib/config";
+import {
+  buildWhatsAppLink,
+  type WhatsAppContext,
+  type WhatsAppNumberKey,
+} from "@/lib/whatsapp";
+import { haptic } from "@/lib/haptics";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { BogolanDivider } from "@/components/PlaneIcon";
+import { cn } from "@/lib/utils";
 
 const REASSURING_POINTS = [
   {
@@ -25,8 +33,8 @@ const REASSURING_POINTS = [
   },
   {
     icon: MapPinned,
-    title: "Comptoir dédié à Nsimalen",
-    text: "Le jour J, un comptoir Elites Voyages vous accueille à l'aéroport. Enregistrement facilité, papiers vérifiés, départ serein.",
+    title: "Comptoir dédié à l'aéroport",
+    text: "Le jour J, un comptoir Elites Voyages vous accueille à Nsimalen ou à Douala selon votre départ. Enregistrement facilité, papiers vérifiés, départ serein.",
   },
   {
     icon: HeartHandshake,
@@ -40,9 +48,160 @@ const REASSURING_POINTS = [
   },
 ];
 
-export function FlightDatesSection() {
-  const flight = FLIGHT_DATES[0];
+interface DepartureCardProps {
+  departure: Departure;
+  whatsappContext: WhatsAppContext;
+  whatsappNumber: WhatsAppNumberKey;
+  delay: number;
+}
 
+function DepartureCard({
+  departure,
+  whatsappContext,
+  whatsappNumber,
+  delay,
+}: DepartureCardProps) {
+  const isConfirmed = departure.status === "confirmed";
+  const dayNumber = departure.flightDateLabel.split(" ")[0];
+  const monthYear = departure.flightDateLabel.split(" ").slice(1).join(" ");
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.55, delay }}
+      className={cn(
+        "relative overflow-hidden rounded-3xl border p-7 sm:p-8 backdrop-blur transition-all hover:-translate-y-1",
+        isConfirmed
+          ? "border-accent/40 bg-gradient-to-br from-white/12 via-white/6 to-transparent shadow-raised"
+          : "border-white/15 bg-white/5",
+      )}
+    >
+      {/* Status badge */}
+      <div className="flex items-center justify-between mb-5 flex-wrap gap-2">
+        <div className="text-[10px] uppercase tracking-[0.22em] text-accent font-semibold">
+          Départ depuis {departure.city}
+        </div>
+        {isConfirmed ? (
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-whatsapp/15 border border-whatsapp/40 px-2.5 py-1 text-[11px] font-medium text-whatsapp">
+            <CheckCircle2 className="h-3 w-3" />
+            Confirmé
+          </span>
+        ) : (
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-warning/15 border border-warning/40 px-2.5 py-1 text-[11px] font-medium text-warning">
+            <Loader2 className="h-3 w-3 animate-spin" />
+            Mise à jour en cours
+          </span>
+        )}
+      </div>
+
+      {/* Date */}
+      <div className="mb-6">
+        <div className="text-[11px] uppercase tracking-wider text-cream/55 font-medium mb-1">
+          {departure.flightWeekday}
+        </div>
+        <div className="flex items-baseline gap-2">
+          <div className="font-serif text-5xl sm:text-6xl font-medium text-white leading-none">
+            {dayNumber}
+          </div>
+          <div className="font-serif text-2xl text-cream/85 leading-none">
+            {monthYear}
+          </div>
+        </div>
+      </div>
+
+      {/* Route line */}
+      <div className="flex items-center gap-2 mb-6 text-cream/85 text-sm">
+        <span className="font-medium text-white">{departure.city}</span>
+        <span className="text-[10px] text-cream/45">
+          ({departure.airportCode})
+        </span>
+        <span className="flex-1 flex items-center gap-1.5 px-1">
+          <span className="h-px flex-1 bg-accent/40" />
+          <Plane className="h-3.5 w-3.5 text-accent shrink-0" />
+          <span className="h-px flex-1 bg-accent/40" />
+        </span>
+        <span className="font-medium text-white">Paris</span>
+        <span className="text-[10px] text-cream/45">(CDG)</span>
+      </div>
+
+      {/* Price */}
+      <div className="mb-6 rounded-2xl border border-white/10 bg-white/5 p-5">
+        <div className="text-[10px] uppercase tracking-wider text-accent font-medium mb-1">
+          Tarif groupe
+        </div>
+        <div className="flex items-baseline gap-2 flex-wrap">
+          <span className="text-xs text-cream/65">à partir de</span>
+          <span className="font-serif text-3xl sm:text-4xl font-semibold text-white tabular-nums leading-none">
+            {formatXAF(departure.totalPrice)}
+          </span>
+        </div>
+        {isConfirmed && departure.paymentSteps.length > 0 && (
+          <div className="mt-3 text-xs text-cream/65 leading-relaxed">
+            Inscription{" "}
+            <strong className="text-accent-warm">
+              {formatXAF(departure.inscriptionPrice)}
+            </strong>{" "}
+            avant le{" "}
+            <strong className="text-white">
+              {departure.reservationDeadlineLabel}
+            </strong>{" "}
+            · paiement en 3 fois
+          </div>
+        )}
+      </div>
+
+      {/* Status note */}
+      <div
+        className={cn(
+          "mb-6 rounded-xl border-l-2 px-4 py-3 text-xs leading-relaxed",
+          isConfirmed
+            ? "border-accent/50 bg-white/5 text-cream/75 italic"
+            : "border-warning/60 bg-warning/8 text-cream/85",
+        )}
+      >
+        {isConfirmed ? (
+          <>{departure.note}</>
+        ) : (
+          <>
+            <strong className="text-white not-italic">
+              Modalités en cours de finalisation.
+            </strong>{" "}
+            Paiement libre en attendant confirmation. Réservation conseillée
+            avant{" "}
+            <strong className="text-white not-italic">
+              {departure.reservationDeadlineLabel}
+            </strong>
+            .
+          </>
+        )}
+      </div>
+
+      {/* CTA */}
+      <Button
+        asChild
+        variant={isConfirmed ? "cta" : "outline-light"}
+        size="default"
+        className="w-full"
+        onClick={() => haptic("light")}
+      >
+        <a
+          href={buildWhatsAppLink(whatsappContext, whatsappNumber)}
+          target="_blank"
+          rel="noopener"
+        >
+          <WhatsAppIcon className="h-4 w-4" />
+          {isConfirmed
+            ? `Réserver le ${dayNumber} ${monthYear.split(" ")[0]}`
+            : `Demander les détails Douala`}
+        </a>
+      </Button>
+    </motion.div>
+  );
+}
+
+export function FlightDatesSection() {
   return (
     <section
       id="dates"
@@ -65,86 +224,35 @@ export function FlightDatesSection() {
         >
           <Badge variant="gold" className="mb-4 bg-white/10 border border-accent/40">
             <Calendar className="h-3.5 w-3.5" />
-            Date officielle de départ
+            Choisissez votre départ
           </Badge>
           <h2 className="fluid-h2 font-serif font-medium text-white text-balance">
-            Un départ organisé pour vos étudiants
+            Deux départs pour Paris, selon votre agence
           </h2>
           <p className="mt-4 text-base sm:text-lg text-cream/70 leading-relaxed text-pretty">
             Plusieurs vagues de départ sont organisées tout au long du mois
-            d'août pour s'adapter au calendrier de chaque famille. Le vol du{" "}
-            <strong className="text-white not-italic">26 août</strong> reste le
-            créneau recommandé.
+            d'août pour s'adapter au calendrier de chaque famille. Chaque
+            agence opère son propre vol groupé avec son tarif dédié.
           </p>
         </motion.div>
 
-        {/* Single-date hero card */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
-          className="relative overflow-hidden rounded-3xl border border-accent/40 bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur p-8 sm:p-12 mb-10"
-        >
-          <div
-            aria-hidden
-            className="absolute -right-10 -top-10 opacity-15 pointer-events-none"
-          >
-            <Plane className="h-48 w-48 text-accent -rotate-12" strokeWidth={1} />
-          </div>
+        {/* Two departure cards side-by-side */}
+        <div className="grid gap-6 lg:grid-cols-2 mb-10">
+          <DepartureCard
+            departure={DEPARTURES.yaounde}
+            whatsappContext="reservation-yaounde"
+            whatsappNumber="yaounde1"
+            delay={0}
+          />
+          <DepartureCard
+            departure={DEPARTURES.douala}
+            whatsappContext="reservation-douala"
+            whatsappNumber="douala1"
+            delay={0.15}
+          />
+        </div>
 
-          <div className="relative grid gap-8 md:grid-cols-[auto_1fr] items-center">
-            {/* Date block */}
-            <div className="text-center md:text-left">
-              <div className="text-[11px] uppercase tracking-[0.22em] text-accent font-medium mb-2">
-                {flight.weekday}
-              </div>
-              <div className="font-serif text-6xl sm:text-7xl font-medium text-white leading-none mb-1">
-                26
-              </div>
-              <div className="font-serif text-2xl sm:text-3xl text-cream/90 leading-none">
-                août 2026
-              </div>
-            </div>
-
-            {/* Route + reassurance */}
-            <div className="space-y-5">
-              <div className="flex items-center gap-3 sm:gap-4 text-white">
-                <div className="flex flex-col items-start">
-                  <div className="text-[10px] uppercase tracking-wider text-accent">
-                    Départ
-                  </div>
-                  <div className="font-serif text-xl sm:text-2xl font-medium">
-                    Yaoundé
-                  </div>
-                  <div className="text-xs text-cream/55">NSIMALEN (NSI)</div>
-                </div>
-
-                <div className="flex-1 flex items-center gap-2 px-2">
-                  <span className="h-px flex-1 bg-gradient-to-r from-accent/50 to-accent" />
-                  <Plane className="h-4 w-4 text-accent shrink-0" />
-                  <span className="h-px flex-1 bg-gradient-to-r from-accent to-accent/50" />
-                </div>
-
-                <div className="flex flex-col items-end text-right">
-                  <div className="text-[10px] uppercase tracking-wider text-accent">
-                    Arrivée
-                  </div>
-                  <div className="font-serif text-xl sm:text-2xl font-medium">
-                    Paris
-                  </div>
-                  <div className="text-xs text-cream/55">CDG</div>
-                </div>
-              </div>
-
-              <p className="text-sm text-cream/70 leading-relaxed border-l-2 border-accent/40 pl-4 italic">
-                {flight.note}
-              </p>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Flexibility note — possibilité de choisir un autre jour */}
+        {/* Flexibility note */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -157,22 +265,28 @@ export function FlightDatesSection() {
           </div>
           <div className="flex-1 space-y-1">
             <div className="font-serif text-lg font-semibold text-white leading-tight">
-              Possibilité de choisir un autre jour de départ
+              Vous pouvez voyager via l'autre agence
             </div>
             <p className="text-sm text-cream/70 leading-relaxed">
-              Si la date du 26 août ne convient pas à votre situation, parlez-en
-              à notre équipe. Nous étudions ensemble une alternative selon les
-              disponibilités.
+              Un étudiant de Douala peut voyager par Yaoundé, et inversement,
+              selon les disponibilités. Chaque vol garde le tarif de son
+              agence d'origine. Parlons-en pour trouver la meilleure option.
             </p>
           </div>
-          <Button asChild variant="outline-light" size="sm" className="shrink-0">
+          <Button
+            asChild
+            variant="outline-light"
+            size="sm"
+            className="shrink-0"
+            onClick={() => haptic("light")}
+          >
             <a
               href={buildWhatsAppLink("info-dates-vol")}
               target="_blank"
               rel="noopener"
             >
               <WhatsAppIcon className="h-4 w-4" />
-              Demander une autre date
+              Étudier mon cas
             </a>
           </Button>
         </motion.div>
@@ -219,14 +333,19 @@ export function FlightDatesSection() {
             </strong>
             . Notre équipe vous y accueille au comptoir dédié.
           </p>
-          <Button asChild variant="outline-light" size="default">
+          <Button
+            asChild
+            variant="outline-light"
+            size="default"
+            onClick={() => haptic("light")}
+          >
             <a
               href={buildWhatsAppLink("info-dates-vol")}
               target="_blank"
               rel="noopener"
             >
               <WhatsAppIcon className="h-4 w-4" />
-              Question sur le départ
+              Question sur les départs
             </a>
           </Button>
         </motion.div>
