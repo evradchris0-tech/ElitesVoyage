@@ -6,7 +6,11 @@ import { Star, Check, Info, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { DEPARTURES, formatXAF, type Departure } from "@/lib/config";
-import { buildWhatsAppLink } from "@/lib/whatsapp";
+import {
+  buildWhatsAppLink,
+  type WhatsAppContext,
+  type WhatsAppNumberKey,
+} from "@/lib/whatsapp";
 import { trackConversion, CONVERSION_EVENTS } from "@/lib/track";
 import { haptic } from "@/lib/haptics";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
@@ -14,7 +18,17 @@ import { cn } from "@/lib/utils";
 
 type DepartureId = "yaounde" | "douala";
 
-function YaoundeTimeline({ departure }: { departure: Departure }) {
+const WA_BY_DEPARTURE: Record<
+  DepartureId,
+  { context: WhatsAppContext; number: WhatsAppNumberKey }
+> = {
+  yaounde: { context: "reservation-yaounde", number: "yaounde1" },
+  douala: { context: "reservation-douala", number: "douala1" },
+};
+
+function DepartureTimeline({ departure }: { departure: Departure }) {
+  const wa = WA_BY_DEPARTURE[departure.id];
+
   return (
     <>
       {/* TIMELINE */}
@@ -99,7 +113,7 @@ function YaoundeTimeline({ departure }: { departure: Departure }) {
         </div>
       </div>
 
-      {/* Total */}
+      {/* Total + CTA */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -113,7 +127,7 @@ function YaoundeTimeline({ departure }: { departure: Departure }) {
           </div>
           <div>
             <div className="text-[11px] uppercase tracking-[0.18em] text-accent">
-              Total départ Yaoundé
+              Total départ {departure.city}
             </div>
             <div className="font-serif text-3xl sm:text-4xl font-semibold">
               {formatXAF(departure.totalPrice)}
@@ -131,7 +145,7 @@ function YaoundeTimeline({ departure }: { departure: Departure }) {
           }}
         >
           <a
-            href={buildWhatsAppLink("reservation-yaounde", "yaounde1")}
+            href={buildWhatsAppLink(wa.context, wa.number)}
             target="_blank"
             rel="noopener"
           >
@@ -144,7 +158,8 @@ function YaoundeTimeline({ departure }: { departure: Departure }) {
   );
 }
 
-function DoualaPlaceholder({ departure }: { departure: Departure }) {
+function PendingPlaceholder({ departure }: { departure: Departure }) {
+  const wa = WA_BY_DEPARTURE[departure.id];
   return (
     <motion.div
       initial={{ opacity: 0, y: 16 }}
@@ -153,7 +168,6 @@ function DoualaPlaceholder({ departure }: { departure: Departure }) {
       transition={{ duration: 0.4 }}
       className="space-y-6"
     >
-      {/* Info card */}
       <div className="rounded-2xl border-2 border-yellow-500/30 bg-yellow-50/50 p-6 sm:p-8 text-center">
         <div className="flex justify-center mb-4">
           <div className="flex h-14 w-14 items-center justify-center rounded-full bg-yellow-500/15">
@@ -164,36 +178,34 @@ function DoualaPlaceholder({ departure }: { departure: Departure }) {
           Échéancier en cours de finalisation
         </h3>
         <p className="text-sm sm:text-base text-navy/70 leading-relaxed max-w-lg mx-auto mb-4">
-          Le départ depuis Douala le{" "}
-          <strong className="text-navy">30 août 2026</strong> est proposé à
-          partir de{" "}
-          <strong className="text-navy">{formatXAF(departure.totalPrice)}</strong>.
-          Le paiement est libre en attendant la confirmation des dates précises
+          Le départ depuis {departure.city} le{" "}
+          <strong className="text-navy">{departure.flightDateLabel}</strong> est
+          proposé à partir de{" "}
+          <strong className="text-navy">{formatXAF(departure.totalPrice)}</strong>
+          . Le paiement est libre en attendant la confirmation des dates précises
           de l'échéancier.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-3 text-sm text-navy/60 mb-6">
           <span className="inline-flex items-center gap-1.5">
             <span className="h-1.5 w-1.5 rounded-full bg-yellow-500" />
-            Réservation avant <strong className="text-navy">fin juin 2026</strong>
+            Réservation avant{" "}
+            <strong className="text-navy">
+              {departure.reservationDeadlineLabel}
+            </strong>
           </span>
           <span className="inline-flex items-center gap-1.5">
             <span className="h-1.5 w-1.5 rounded-full bg-yellow-500" />
             Paiement libre
           </span>
         </div>
-        <Button
-          asChild
-          variant="cta"
-          size="lg"
-          className="tap-target"
-        >
+        <Button asChild variant="cta" size="lg" className="tap-target">
           <a
-            href={buildWhatsAppLink("reservation-douala", "douala1")}
+            href={buildWhatsAppLink(wa.context, wa.number)}
             target="_blank"
             rel="noopener"
           >
             <WhatsAppIcon className="h-5 w-5" />
-            Contacter l'agence Douala
+            Contacter l'agence {departure.city}
           </a>
         </Button>
       </div>
@@ -201,15 +213,27 @@ function DoualaPlaceholder({ departure }: { departure: Departure }) {
   );
 }
 
+function DepartureTabContent({ departure }: { departure: Departure }) {
+  const isReady =
+    departure.status === "confirmed" && departure.paymentSteps.length > 0;
+  return isReady ? (
+    <DepartureTimeline departure={departure} />
+  ) : (
+    <PendingPlaceholder departure={departure} />
+  );
+}
+
 export function PaymentTimelineSection() {
   const [activeTab, setActiveTab] = useState<DepartureId>("yaounde");
+  const activeDeparture = DEPARTURES[activeTab];
 
   return (
     <section
       id="paiement"
       className="relative section-spacing bg-gradient-to-b from-cream via-white to-cream overflow-hidden"
     >
-      <div className="absolute inset-0 -z-10 opacity-30 pointer-events-none"
+      <div
+        className="absolute inset-0 -z-10 opacity-30 pointer-events-none"
         style={{
           backgroundImage:
             "radial-gradient(ellipse at top, rgba(212,163,115,0.12), transparent 60%)",
@@ -275,27 +299,15 @@ export function PaymentTimelineSection() {
 
         {/* ── Tab content ── */}
         <AnimatePresence mode="wait">
-          {activeTab === "yaounde" ? (
-            <motion.div
-              key="yaounde"
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.3 }}
-            >
-              <YaoundeTimeline departure={DEPARTURES.yaounde} />
-            </motion.div>
-          ) : (
-            <motion.div
-              key="douala"
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.3 }}
-            >
-              <DoualaPlaceholder departure={DEPARTURES.douala} />
-            </motion.div>
-          )}
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.3 }}
+          >
+            <DepartureTabContent departure={activeDeparture} />
+          </motion.div>
         </AnimatePresence>
       </div>
     </section>
