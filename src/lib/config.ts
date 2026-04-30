@@ -168,7 +168,7 @@ export const AGENCIES = {
     city: "Douala",
     address: "Bali, à côté Station MRS, face Pharmacie Koumassi",
     email: "sales-douala@elites-voyages.com",
-    phones: ["237686469684"],
+    phones: ["237690131011"],
     mapsEmbed:
       "https://maps.google.com/maps?q=Elites+Voyages%2C+%C3%80+c%C3%B4t%C3%A9+station+MRS%2C+face+pharmacie%2C+Douala&t=&z=18&ie=UTF8&iwloc=&output=embed",
   },

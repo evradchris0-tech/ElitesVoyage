@@ -39,7 +39,7 @@ export default function MentionsLegalesPage() {
               </p>
               <p><strong>Email :</strong> sales-yaounde@elites-voyages.com</p>
               <p><strong>Téléphone Yaoundé :</strong> +237 696 79 23 00</p>
-              <p><strong>Téléphone Douala :</strong> +237 686 46 96 84</p>
+              <p><strong>Téléphone Douala :</strong> +237 690 13 10 11</p>
             </div>
           </section>
 
@@ -57,7 +57,7 @@ export default function MentionsLegalesPage() {
               <div className="rounded-2xl border border-accent/20 bg-white p-5 space-y-1">
                 <div className="font-semibold text-navy">Douala</div>
                 <p>Bali, à côté Station MRS, face Pharmacie Koumassi</p>
-                <p className="text-navy/60">+237 686 46 96 84</p>
+                <p className="text-navy/60">+237 690 13 10 11</p>
                 <p className="text-navy/60">sales-douala@elites-voyages.com</p>
               </div>
             </div>
