@@ -127,7 +127,7 @@ function DepartureCard({
       </div>
 
       {/* Price */}
-      <div className="mb-6 rounded-2xl border border-white/10 bg-white/5 p-5">
+      <div className="mb-5 rounded-2xl border border-white/10 bg-white/5 p-5">
         <div className="text-[10px] uppercase tracking-wider text-accent font-medium mb-1">
           Tarif groupe
         </div>
@@ -137,20 +137,61 @@ function DepartureCard({
             {formatXAF(departure.totalPrice)}
           </span>
         </div>
-        {isConfirmed && departure.paymentSteps.length > 0 && (
-          <div className="mt-3 text-xs text-cream/65 leading-relaxed">
-            Inscription{" "}
-            <strong className="text-accent-warm">
-              {formatXAF(departure.inscriptionPrice)}
-            </strong>{" "}
-            avant le{" "}
-            <strong className="text-white">
-              {departure.reservationDeadlineLabel}
-            </strong>{" "}
-            · paiement en 3 fois
-          </div>
-        )}
       </div>
+
+      {/* Payment schedule */}
+      {isConfirmed && departure.paymentSteps.length > 0 && (
+        <div className="mb-6 rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
+          <div className="px-4 py-2.5 border-b border-white/10 text-[10px] uppercase tracking-wider text-accent font-medium">
+            Échéancier de paiement
+          </div>
+          <ul className="divide-y divide-white/8">
+            {departure.paymentSteps.map((step, idx) => (
+              <li
+                key={step.dateShort}
+                className={cn(
+                  "flex items-center justify-between gap-3 px-4 py-3 text-sm",
+                  step.highlighted ? "bg-accent-warm/8" : "",
+                )}
+              >
+                <div className="flex items-center gap-2 min-w-0">
+                  <span
+                    className={cn(
+                      "flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[10px] font-semibold",
+                      step.highlighted
+                        ? "bg-accent-warm text-white"
+                        : "bg-white/10 text-cream/70",
+                    )}
+                  >
+                    {idx + 1}
+                  </span>
+                  <div className="min-w-0">
+                    <div
+                      className={cn(
+                        "text-xs font-medium truncate",
+                        step.highlighted ? "text-white" : "text-cream/85",
+                      )}
+                    >
+                      {step.label}
+                    </div>
+                    <div className="text-[11px] text-cream/55">
+                      avant le {step.dateShort}
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className={cn(
+                    "shrink-0 font-serif text-sm font-semibold tabular-nums",
+                    step.highlighted ? "text-accent-warm" : "text-white",
+                  )}
+                >
+                  {formatXAF(step.amount)}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       {/* Status note */}
       <div
