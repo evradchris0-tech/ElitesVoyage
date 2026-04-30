@@ -79,7 +79,7 @@ export function HeroSection() {
             >
               L'offre officielle de mobilité étudiante pensée pour les{" "}
               <span className="font-semibold text-white">étudiants</span> et
-              leurs <span className="font-semibold text-white">parents</span>{" "}
+              des <span className="font-semibold text-white">parents</span>{" "}
               qui s'envolent vers la France pour la rentrée 2026.
             </motion.p>
 

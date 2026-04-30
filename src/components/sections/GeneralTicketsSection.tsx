@@ -33,7 +33,7 @@ export function GeneralTicketsSection() {
                 Vous n'êtes pas étudiant ? Voyagez avec nous !
               </div>
               <h3 className="font-serif text-3xl sm:text-4xl text-white mb-4 leading-tight">
-                Frais de réservation de billet à partir de<br/>
+                Frais de réservation de vol à partir de<br/>
                 <span className="text-accent-warm font-bold text-5xl sm:text-6xl inline-block mt-2">
                   {formatXAF(CAMPAIGN.generalTicketReservation)}
                 </span>
@@ -54,7 +54,7 @@ export function GeneralTicketsSection() {
               className="group flex w-full lg:w-auto items-center justify-center gap-3 rounded-full bg-whatsapp px-8 py-4 sm:px-10 sm:py-5 text-base sm:text-lg font-semibold text-white shadow-soft transition-all hover:bg-whatsapp/90 hover:scale-105 active:scale-95"
             >
               <WhatsAppIcon className="h-6 w-6" />
-              Réserver mon billet
+              Réserver mon vol
             </a>
             <p className="text-xs text-white/40 text-center mt-4">
               Assistance 7j/7 garantie.

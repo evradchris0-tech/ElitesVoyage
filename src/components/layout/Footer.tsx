@@ -143,7 +143,7 @@ export function Footer() {
             </p>
             <div className="rounded-xl border border-accent/30 bg-white/5 p-4">
               <div className="text-[11px] uppercase tracking-wider text-accent mb-1">
-                Réservation billet d'avion
+                Réservation de vol
               </div>
               <div className="text-lg font-serif text-white mb-2">
                 Dès <span className="text-accent-warm">2 500 FCFA</span>

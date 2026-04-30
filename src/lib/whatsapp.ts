@@ -47,7 +47,7 @@ const messages: Record<WhatsAppContext, string> = {
   "billet-autre":
     "Bonjour Elites Voyages, je souhaite des informations sur vos services de billetterie générale.",
   "billet-avion-2500":
-    "Bonjour Elites Voyages, je souhaite réserver un billet d'avion à partir de 2 500 FCFA. Voici ma demande :\n\n- Ville de départ :\n- Ville d'arrivée :\n- Date souhaitée :\n- Nombre de passagers :\n\nMerci.",
+    "Bonjour Elites Voyages, je souhaite réserver un vol à partir de 2 500 FCFA de frais de réservation. Voici ma demande :\n\n- Ville de départ :\n- Ville d'arrivée :\n- Date souhaitée :\n- Nombre de passagers :\n\nMerci.",
 };
 
 export function buildWhatsAppLink(
