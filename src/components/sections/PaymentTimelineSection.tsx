@@ -33,8 +33,8 @@ function DepartureTimeline({ departure }: { departure: Departure }) {
     <>
       {/* TIMELINE */}
       <div>
-        {/* ── Dot row ── */}
-        <div className="relative grid md:grid-cols-3 mb-4">
+        {/* ── Dot row — hidden on mobile (cards already convey the order) ── */}
+        <div className="relative hidden md:grid md:grid-cols-3 mb-4">
           <div
             aria-hidden
             className="hidden md:block absolute top-1/2 -translate-y-1/2 left-[16.667%] right-[16.667%] h-[2px] bg-gradient-to-r from-accent-warm via-accent to-accent/40"
@@ -76,7 +76,7 @@ function DepartureTimeline({ departure }: { departure: Departure }) {
             >
               <div
                 className={cn(
-                  "rounded-2xl border-2 p-6 text-center transition-all h-full",
+                  "rounded-2xl border-2 p-4 sm:p-6 text-center transition-all h-full",
                   step.highlighted
                     ? "border-accent-warm bg-white shadow-raised"
                     : "border-accent/30 bg-white/60",
@@ -87,7 +87,7 @@ function DepartureTimeline({ departure }: { departure: Departure }) {
                 </div>
                 <div
                   className={cn(
-                    "font-serif text-3xl sm:text-4xl font-semibold mb-1 tabular-nums",
+                    "font-serif text-2xl sm:text-4xl font-semibold mb-1 tabular-nums",
                     step.highlighted ? "text-accent-warm" : "text-navy",
                   )}
                 >
@@ -282,7 +282,7 @@ export function PaymentTimelineSection() {
               >
                 <MapPin className="h-4 w-4" />
                 <span className="font-serif font-semibold">{dep.city}</span>
-                <span className="text-xs opacity-70">
+                <span className="text-xs opacity-70 truncate">
                   {dep.flightDateLabel.split(" ").slice(0, 2).join(" ")}
                 </span>
                 {isActive && (

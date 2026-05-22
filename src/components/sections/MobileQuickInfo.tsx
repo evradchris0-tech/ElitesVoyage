@@ -54,7 +54,7 @@ export function MobileQuickInfo() {
       className="sm:hidden bg-cream border-y border-accent/20 py-6"
     >
       <div className="container-wide">
-        <div className="text-[10px] uppercase tracking-[0.18em] text-navy/55 mb-3 font-medium px-1">
+        <div className="text-xs uppercase tracking-[0.18em] text-navy/55 mb-3 font-medium px-1">
           L'essentiel en un coup d'œil
         </div>
         <div className="grid grid-cols-2 gap-3">
@@ -87,7 +87,7 @@ export function MobileQuickInfo() {
                 </div>
                 <ChevronRight className="h-3.5 w-3.5 text-navy/30 group-active:text-accent-warm transition-colors" />
               </div>
-              <div className="text-[10px] uppercase tracking-wider text-navy/55 font-medium leading-tight">
+              <div className="text-xs uppercase tracking-wider text-navy/55 font-medium leading-tight">
                 {item.label}
               </div>
               <div

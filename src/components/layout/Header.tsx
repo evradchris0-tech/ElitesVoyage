@@ -34,7 +34,7 @@ export function Header() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 w-full transition-all duration-300",
+        "sticky top-0 z-50 w-full transition-all duration-300",
         scrolled
           ? "bg-cream/85 backdrop-blur-xl supports-[backdrop-filter]:bg-cream/70 border-b border-accent/20 shadow-soft"
           : "bg-transparent",

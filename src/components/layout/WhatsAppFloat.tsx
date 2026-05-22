@@ -44,7 +44,7 @@ export function WhatsAppFloat() {
             haptic("light");
             trackConversion(CONVERSION_EVENTS.WHATSAPP_FLOAT, { path: pathname });
           }}
-          className="fixed right-4 bottom-[calc(5.75rem+env(safe-area-inset-bottom,0px))] sm:bottom-6 sm:right-6 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-whatsapp text-white shadow-raised active:scale-95 hover:scale-105 transition-transform tap-target"
+          className="fixed right-4 bottom-[calc(5.5rem+env(safe-area-inset-bottom,0px))] sm:bottom-6 sm:right-6 z-[35] flex h-14 w-14 items-center justify-center rounded-full bg-whatsapp text-white shadow-raised active:scale-95 hover:scale-105 transition-transform tap-target"
         >
           <span className="absolute inset-0 rounded-full bg-whatsapp animate-ping opacity-30" aria-hidden />
           <WhatsAppIcon className="relative h-7 w-7" />

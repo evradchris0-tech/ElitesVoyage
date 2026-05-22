@@ -63,7 +63,7 @@ export function MobileAnchorBar() {
           exit={{ y: -50, opacity: 0 }}
           transition={{ type: "spring", stiffness: 280, damping: 26 }}
           aria-label="Navigation rapide entre les sections"
-          className="sm:hidden fixed top-16 inset-x-0 z-30 border-b border-accent/20 bg-cream/85 supports-[backdrop-filter]:bg-cream/70 backdrop-blur-xl"
+          className="sm:hidden fixed top-16 inset-x-0 z-40 border-b border-accent/20 bg-cream/85 supports-[backdrop-filter]:bg-cream/70 backdrop-blur-xl"
         >
           <div
             className="snap-row flex gap-2 overflow-x-auto px-4 py-2.5"
@@ -78,7 +78,7 @@ export function MobileAnchorBar() {
                   href={a.href}
                   onClick={() => haptic("light")}
                   className={cn(
-                    "shrink-0 inline-flex items-center rounded-full border px-3.5 py-1.5 text-[13px] font-medium transition-all active:scale-95",
+                    "shrink-0 inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium transition-all active:scale-95",
                     isActive
                       ? "border-navy bg-navy text-cream shadow-soft"
                       : "border-accent/35 bg-white/70 text-navy/75 hover:text-navy",
